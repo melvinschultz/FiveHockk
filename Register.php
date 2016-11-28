@@ -5,8 +5,9 @@
  * Date: 22/11/16
  * Time: 22:08
  */
+    include '../mediacenter-v1/inc/htpasswd.php';
 
-    $connect = mysqli_connect("HOST", "USER", "PASSWORD", "DATABASE");
+    $connect = mysqli_connect($host, $user, $password, $dbname);
 
     $username = $_POST["username"];
     $email = $_POST["email"];
