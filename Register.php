@@ -13,6 +13,8 @@
     $email = $_POST["email"];
     $password = $_POST["password"];
 
+//    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
     $statement = mysqli_prepare($connect, "INSERT INTO user (username, email, password) VALUES (?, ?, ?)");
     mysqli_stmt_bind_param($statement, "sss", $username, $email, $password);
     mysqli_stmt_execute($statement);
