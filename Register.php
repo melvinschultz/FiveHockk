@@ -18,7 +18,7 @@
 
         $passwordHash = password_hash($password, PASSWORD_BCRYPT);
         
-        $statement = mysqli_prepare($connect, "INSERT INTO user (username, email, password) VALUES (?, ?, ?)");
+        $statement = mysqli_prepare($connect, "INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
         mysqli_stmt_bind_param($statement, "sss", $username, $email, $passwordHash);
         mysqli_stmt_execute($statement);
         mysqli_stmt_close($statement);
@@ -27,7 +27,7 @@
     function usernameAvailable() {
         global $connect, $username;
 
-        $statement = mysqli_prepare($connect, "SELECT * FROM user WHERE username = ?");
+        $statement = mysqli_prepare($connect, "SELECT * FROM users WHERE username = ?");
         mysqli_stmt_bind_param($statement, "s", $username);
         mysqli_stmt_execute($statement);
         mysqli_stmt_store_result($statement);
@@ -44,7 +44,7 @@
     function emailAvailable() {
         global $connect, $email;
 
-        $statement = mysqli_prepare($connect, "SELECT * FROM user WHERE email = ?");
+        $statement = mysqli_prepare($connect, "SELECT * FROM users WHERE email = ?");
         mysqli_stmt_bind_param($statement, "s", $email);
         mysqli_stmt_execute($statement);
         mysqli_stmt_store_result($statement);
