@@ -3,4 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="colorFivehockPrimary">#914e4e</color>
+    <color name="colorFivehockSecondary">#E28F8F</color>
+    <color name="colorFivegockTiertiary">#d3a131</color>
+
 </resources>

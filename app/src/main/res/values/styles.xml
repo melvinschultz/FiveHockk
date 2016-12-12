@@ -8,4 +8,7 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="ButtonLogin" parent="Theme.AppCompat.Light">
+        <item name="colorControlHighlight">@color/colorFivehockPrimary</item>
+    </style>
 </resources>
