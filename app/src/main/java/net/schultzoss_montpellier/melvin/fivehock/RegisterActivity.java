@@ -40,6 +40,19 @@ public class RegisterActivity extends AppCompatActivity {
                         try {
                             JSONObject jsonResponse = new JSONObject(response);
                             boolean success = jsonResponse.getBoolean("success");
+//                            String username = jsonResponse.getString("username");
+//                            String email = jsonResponse.getString("email");
+//                            String password = jsonResponse.getString("password");
+//                            String level = jsonResponse.getString("level");
+//                            String experience = jsonResponse.getString("experience");
+//                            String hock_coins = jsonResponse.getString("hock_coins");
+//
+//                            System.out.println(username);
+//                            System.out.println(email);
+//                            System.out.println(password);
+//                            System.out.println(level);
+//                            System.out.println(experience);
+//                            System.out.println(hock_coins);
 
                             if (success) {
                                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);

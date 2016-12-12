@@ -12,11 +12,11 @@
     $email = $_POST["email"];
     $password = $_POST["password"];
 
-    $statement = mysqli_prepare($connect, "SELECT * FROM users WHERE email = ?");
+    $statement = mysqli_prepare($connect, "SELECT * FROM user WHERE email = ?");
     mysqli_stmt_bind_param($statement, "s", $email);
     mysqli_stmt_execute($statement);
     mysqli_stmt_store_result($statement);
-    mysqli_stmt_bind_result($statement, $colId, $colUsername, $colEmail, $colPassword);
+    mysqli_stmt_bind_result($statement, $colId, $colUsername, $colEmail, $colPassword, $colLevel, $colExperience, $colAvatar, $colHock_coins);
 
     $response = array();
     $response["success"] = false;

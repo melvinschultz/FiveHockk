@@ -22,9 +22,9 @@ public class RegisterRequest extends StringRequest {
         params.put("email", email);
         params.put("password", password);
 
-        System.out.println(username);
-        System.out.println(email);
-        System.out.println(password);
+//        System.out.println(username);
+//        System.out.println(email);
+//        System.out.println(password);
     }
 
     @Override
