@@ -3,12 +3,30 @@
 
     <item
         is-multidex="true"
+        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
+        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_ba966bdfabb74bcb9e67b5e8d0d254e169abd5cd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.volley\volley\1.0.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
         <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.volley-volley-1.0.0_bb96f6232315ca65c4951bea5aa2aa3aa886e2d3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="68dce4d2783247163fc6bdd19a4e384c54959f8f">
+        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_9c3a121dcca7864a8848770237d5a2c27db3b93e\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -39,6 +57,24 @@
     </item>
     <item
         is-multidex="true"
+        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.0_171ccde6fb64e7965d9ab8cd2c1eb79c32240b05\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_e35c32e13f595469ff5d4c5a646269948525a36b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.0\jars\classes.jar"
         jumboMode="true"
         optimize="true"
@@ -54,6 +90,15 @@
         revision="24.0.2"
         sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
         <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.0_6711b6b445007ba0886a7ca190d9f817658fa1d4\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
+        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.0_c7159a8bab46267a613758fb82956aeba6a87d24\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -79,8 +124,17 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="01b091b4b6f344a099bc9b57210e755fc1eb8261">
+        sha1="1512b4118bef57863e8562fb47dfe452ea5f1595">
         <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_e697fd771724f157cf0bbdbc0572dd97d9e38666\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\libs\internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
+        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_030e29d40fa6ef099701d9a5f16cc6c3ffcbc2b2\classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -108,60 +162,6 @@
         revision="24.0.2"
         sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
         <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_527cf861d95b6710db742cbcb31690e2edd58656\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="ee5faf4dee5b6a4364bf51587871047dde7c703a">
-        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_ba966bdfabb74bcb9e67b5e8d0d254e169abd5cd\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="1d1f54996295b7e3c2ef3f78d812dfa0180a74ad">
-        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_9c3a121dcca7864a8848770237d5a2c27db3b93e\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
-        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.0_171ccde6fb64e7965d9ab8cd2c1eb79c32240b05\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_e35c32e13f595469ff5d4c5a646269948525a36b\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.0\jars\classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="76fb65a4b41ea42dab8a1310ed772a2420c96b52">
-        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.0_c7159a8bab46267a613758fb82956aeba6a87d24\classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.0\jars\libs\internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="3b61a70884adaf0be3fc06c70c801e3e6df13133">
-        <dex dex="C:\Users\Baptiste\Desktop\Git\FiveHockk\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.0_030e29d40fa6ef099701d9a5f16cc6c3ffcbc2b2\classes.dex" />
     </item>
 
 </items>
