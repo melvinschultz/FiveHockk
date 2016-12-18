@@ -21,15 +21,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_265e50b52322c816f34ae02a8c428aa1c83cedf8/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
@@ -57,15 +48,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="4acc40cb06ca07a24ad67eaa07204fa063e00d94">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_308233a8e0a59d56661b97d446a91959e349eda2/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.0.0/jars/libs/internal_impl-25.0.0.jar"
         jumboMode="true"
         optimize="true"
@@ -79,17 +61,8 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="c2ba19a8940543a45d8f43e6ec4e1d00462b4451">
+        sha1="23010b26bd08c3b6675f262e8c3dbd7b4196241e">
         <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_2c0cb36ae514a0b39313e6b4eb8d264740c0a6e0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_d56d5b11e0bf81b60c321296d364bdbb7c1b17f0/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -106,7 +79,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
-        sha1="f93e3dd4f625b34656737c0e5af88a461c7b1327">
+        sha1="a2089f32bd89917297fd168b801bc81f3425043e">
         <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_e7b6857060944f0619bca3d9eb2b07c03e2b178a/classes.dex" />
     </item>
     <item
@@ -120,48 +93,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="26674000177e45447a0326a6ad84612761199a13">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_f057ff30fe66ec0937bae537bd132a953f9a956c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_29c6573bccaa7308dae397f09b8babc8a0b643f7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
         <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_3ca4e176bac4c2c26371f11124b02f59d94fd093/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.0_8cfa3d3331ed762dd8291b6f9af352e44e4ed4f0/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_c63f8f2efa1300f8c59599eb17a2e2c0c5633650/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -174,39 +111,12 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_24aaaecb8f792b58bfdeb18ac6e299473608cec7/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_a57006a4a044ab2ae4e92b29c2d00ac276441900/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.volley/volley/1.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="24.0.2"
         sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
         <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.volley-volley-1.0.0_ec49b45ea3a0c79c6b81dd04000dda1fc501502b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.0_b43cfab54d01bad4549d3f0c34ef31c53bf484fb/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -228,15 +138,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_19104730d4d90220ecbd51ea342b884d531f885b/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
         jumboMode="true"
         optimize="true"
@@ -255,15 +156,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.0_a99871e3de5d574e409d2bee3479176dc6080d41/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -279,6 +171,123 @@
         revision="24.0.2"
         sha1="26674000177e45447a0326a6ad84612761199a13">
         <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_49c64a61a2de9e78e03771b0cf9a8674136d382c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_542496fab76b2d3a3e38e6b7c56ed43e70164fb9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_265e50b52322c816f34ae02a8c428aa1c83cedf8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="4acc40cb06ca07a24ad67eaa07204fa063e00d94">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_308233a8e0a59d56661b97d446a91959e349eda2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="f2e3b9bc1ec25f652e8007ce7774c991e38f6a00">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_d56d5b11e0bf81b60c321296d364bdbb7c1b17f0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="26674000177e45447a0326a6ad84612761199a13">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.0.0_f057ff30fe66ec0937bae537bd132a953f9a956c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="53a420cd4f49274db6bd43475f8006ba67ef6bbd">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.0.0_29c6573bccaa7308dae397f09b8babc8a0b643f7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="4ccbcda5c72027c7f7c14be9ff8640d9cb0d8da0">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.0.0_8cfa3d3331ed762dd8291b6f9af352e44e4ed4f0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_c63f8f2efa1300f8c59599eb17a2e2c0c5633650/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_24aaaecb8f792b58bfdeb18ac6e299473608cec7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_a57006a4a044ab2ae4e92b29c2d00ac276441900/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8bc45ce1f63d1a391fd38b32a201be5a42f9c95d">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.0.0_b43cfab54d01bad4549d3f0c34ef31c53bf484fb/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.0.0/jars/libs/internal_impl-25.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="665d21a8a069c96b4d9e8b434f5096d865b4e261">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-25.0.0_19104730d4d90220ecbd51ea342b884d531f885b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="24.0.2"
+        sha1="75b1f366ff0bbc78f8b1f7cf0dc82e7c53afef6a">
+        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.0.0_a99871e3de5d574e409d2bee3479176dc6080d41/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -306,15 +315,6 @@
         revision="24.0.2"
         sha1="d29714cc76b38157e3cbd034c66e1ec808eb4c19">
         <dex dex="/home/melvin/AndroidStudioProjects/FiveHockk/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.0.0_c91c4dbab5b8154661beda50e16774951e2bcbe9/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="24.0.2"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/melvin/AndroidStudioProjects/FiveHock/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.0.0_542496fab76b2d3a3e38e6b7c56ed43e70164fb9/classes.dex" />
     </item>
 
 </items>
