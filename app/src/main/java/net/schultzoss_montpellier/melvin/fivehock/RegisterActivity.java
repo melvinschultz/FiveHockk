@@ -23,7 +23,7 @@ public class RegisterActivity extends AppCompatActivity {
     //    private Button buttonResetPassword;
     private EditText editTextEmail;
     private EditText editTextPassword;
-    private TextView textViewLoginHere;
+    private TextView textViewLoginMe;
 
     private ProgressBar progressBar;
 
@@ -41,7 +41,7 @@ public class RegisterActivity extends AppCompatActivity {
 //        buttonResetPassword = (Button) findViewById(R.id.buttonResetPassword);
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        textViewLoginHere = (TextView) findViewById(R.id.textViewLoginHere);
+        textViewLoginMe = (TextView) findViewById(R.id.textViewLoginMe);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         /*if (firebaseAuth.getCurrentUser() != null) {
