@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "75277219942",
+    "firebase_url": "https://fivehock-64de1.firebaseio.com",
+    "project_id": "fivehock-64de1",
+    "storage_bucket": "fivehock-64de1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75277219942:android:e2c4d574b27ed238",
+        "android_client_info": {
+          "package_name": "net.schultzoss_montpellier.melvin.fivehock"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "75277219942-duokbu00fsv5ghvioadvhk58afuhugco.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxMVFxyPNbTD3aGH9IBN6RnDi25-cl9LY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="net.schultzoss_montpellier.melvin.fivehock">
 
-    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +18,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".UserAccountActivity"></activity>
+        <activity android:name=".UserAccountActivity" />
+        <activity android:name=".QuestionActivity"></activity>
     </application>
 
 </manifest>
