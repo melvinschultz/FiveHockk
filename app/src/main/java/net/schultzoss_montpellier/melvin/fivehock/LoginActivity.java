@@ -62,12 +62,12 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         // get reset password view when user click on reset password
-        /*buttonResetPassword.setOnClickListener(new View.OnClickListener() {
+        buttonResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
             }
-        });*/
+        });
 
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
