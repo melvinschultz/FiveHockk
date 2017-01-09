@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <Button
+        android:text="@string/start_a_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ViewStartQuizButton"
+        android:layout_weight="0.22"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:text="@string/add_a_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ViewAddQuestionButton"
+        android:layout_weight="0.22"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+
+    <Button
+        android:text="@string/correct_questions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/ViewCorrectQuestionButton"
+        android:layout_weight="0.22"
+        android:textSize="24sp"
+        android:textStyle="normal|bold" />
+
+    <RoundedImageView
+        android:layout_width="153dp"
+        android:layout_height="65dp"
+        android:radius="10dp"
+        app:srcCompat="@drawable/avatar"
+        android:id="@+id/imageView2"
+        android:cropToPadding="false"
+        android:adjustViewBounds="false" />
+</LinearLayout>
