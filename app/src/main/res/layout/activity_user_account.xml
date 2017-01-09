@@ -11,56 +11,75 @@
     tools:context="net.schultzoss_montpellier.melvin.fivehock.UserAccountActivity">
 
     <TextView
-        android:text="Welcome"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textViewWelcomeMessage"
-        android:textAppearance="@style/TextAppearance.AppCompat.Title" />
-
-    <TextView
         android:text="Username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewWelcomeMessage"
-        android:layout_alignParentStart="true"
-        android:id="@+id/textViewUsername" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/textViewUsername"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editTextUsername"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/textViewUsername"
+        android:layout_alignBaseline="@+id/textViewWelcomeMessage"
+        android:layout_alignBottom="@+id/textViewWelcomeMessage"
+        android:layout_toEndOf="@+id/textViewWelcomeMessage"
+        android:layout_marginStart="23dp"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="Email"
+        android:text="Your Email :"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextUsername"
+        android:id="@+id/textTitleViewEmail"
+        android:layout_marginTop="31dp"
+        android:layout_below="@+id/textViewWelcomeMessage"
         android:layout_alignParentStart="true"
-        android:id="@+id/textViewEmail" />
+        android:textSize="20sp"
+        android:textStyle="normal|bold" />
 
-    <EditText
+    <TextView
+        android:text="Your email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:layout_below="@+id/textViewEmail"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editTextEmail"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/textViewEmail"
+        android:textSize="18sp"
+        android:layout_below="@+id/textTitleViewEmail"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Welcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewWelcomeMessage"
+        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/textViewEmail" />
 
     <Button
         android:text="Logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_alignParentStart="true"
         android:id="@+id/buttonLogout"
-        android:layout_alignParentEnd="true" />
+        android:layout_marginBottom="36dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:text="Your current password :"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="31dp"
+        android:id="@+id/textViewTitlePassword"
+        android:textStyle="normal|bold"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif" />
+
+    <TextView
+        android:text="*************"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewPassword"
+        android:textSize="16sp"
+        android:layout_below="@+id/textViewTitlePassword"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
+
 </RelativeLayout>
