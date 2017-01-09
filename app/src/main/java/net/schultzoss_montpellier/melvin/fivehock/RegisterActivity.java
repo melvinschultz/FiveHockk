@@ -1,79 +1,108 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AlertDialog;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.toolbox.Volley;
+import com.google.firebase.auth.FirebaseAuth;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
-public class RegisterActivity extends AppCompatActivity {
+    private Button buttonRegister;
+    private EditText editTextEmail;
+    private EditText editTextPassword;
+    private TextView textViewLoginHere;
+
+    private ProgressDialog progressDialog;
+
+    private FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        final EditText editTextUsername = (EditText) findViewById(R.id.editTextUsername);
-        final EditText editTextEmail = (EditText) findViewById(R.id.editTextEmail);
-        final EditText editTextPassword = (EditText) findViewById(R.id.editTextPassword);
-        final Button buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        firebaseAuth = FirebaseAuth.getInstance();
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final String username = editTextUsername.getText().toString();
-                final String email = editTextEmail.getText().toString();
-                final String password = editTextPassword.getText().toString();
+        if (firebaseAuth.getCurrentUser() != null) {
+            // start the profile activity here
+            finish();
+            startActivity(new Intent(getApplicationContext(), UserAccountActivity.class));
+        }
 
-                Response.Listener<String> responseListener = new Response.Listener<String>() {
+        progressDialog = new ProgressDialog(this);
+
+        buttonRegister = (Button)findViewById(R.id.buttonRegister);
+        editTextEmail = (EditText)findViewById(R.id.editTextEmail);
+        editTextPassword = (EditText)findViewById(R.id.editTextPassword);
+        textViewLoginHere = (TextView)findViewById(R.id.textViewLoginHere);
+
+        buttonRegister.setOnClickListener(this);
+        textViewLoginHere.setOnClickListener(this);
+    }
+
+    private void registerUser() {
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+
+        if (TextUtils.isEmpty(email)) {
+            // email is empty
+            Toast.makeText(this, "Please enter email", Toast.LENGTH_SHORT).show();
+            // stopping the function execution further
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            // password is empty
+            Toast.makeText(this, "Please enter password", Toast.LENGTH_SHORT).show();
+            // stopping the function execution further
+            return;
+        }
+
+        // if validations are ok
+        // we will first show a progressDialog
+        progressDialog.setMessage("Registering User...");
+        progressDialog.show();
+
+        // create a new user
+        firebaseAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<com.google.firebase.auth.AuthResult>() {
                     @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonResponse = new JSONObject(response);
-                            boolean success = jsonResponse.getBoolean("success");
-//                            String username = jsonResponse.getString("username");
-//                            String email = jsonResponse.getString("email");
-//                            String password = jsonResponse.getString("password");
-//                            String level = jsonResponse.getString("level");
-//                            String experience = jsonResponse.getString("experience");
-//                            String hock_coins = jsonResponse.getString("hock_coins");
-//
-//                            System.out.println(username);
-//                            System.out.println(email);
-//                            System.out.println(password);
-//                            System.out.println(level);
-//                            System.out.println(experience);
-//                            System.out.println(hock_coins);
+                    public void onComplete(@NonNull Task<com.google.firebase.auth.AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // user is successfully registered and logged in
+                            // we will start the profile activity here
+                            finish();
+                            startActivity(new Intent(getApplicationContext(), UserAccountActivity.class));
 
-                            if (success) {
-                                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                RegisterActivity.this.startActivity(intent);
-                            }else{
-                                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
-                                builder.setMessage("Register failed : username or email already registered")
-                                        .setNegativeButton("Retry", null)
-                                        .create()
-                                        .show();
-                            }
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            // right now lets display a toast only
+                            Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "Could not registered, please try again", Toast.LENGTH_SHORT).show();
                         }
+                        progressDialog.dismiss(); // dismiss the progress bar
                     }
-                };
+                });
+    }
 
-                RegisterRequest registerRequest = new RegisterRequest(username, email, password, responseListener);
-                RequestQueue queue = Volley.newRequestQueue(RegisterActivity.this);
-                queue.add(registerRequest);
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        if (view == buttonRegister) {
+            registerUser();
+        }
+
+        if (view == textViewLoginHere) {
+            // will open login activity here
+            finish();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
     }
 }

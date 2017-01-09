@@ -11,6 +11,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.schultzoss_montpellier.melvin.fivehock.RegisterActivity">
 
+    <TextView
+        android:text="Login Here"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewLoginHere"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:textColor="@color/colorFivegockTiertiary" />
+
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
