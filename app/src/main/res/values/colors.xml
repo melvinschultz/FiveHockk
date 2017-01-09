@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#914e4e</color>
+    <color name="colorPrimary">#34495e</color>
     <!-- Not dark -->
-    <color name="colorPrimaryDark">#E28F8F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorPrimaryDark">#f39c12</color>
+    <color name="colorAccent">#f1c40f</color>
 
-    <color name="colorFivehockPrimary">#914e4e</color>
-    <color name="colorFivehockSecondary">#E28F8F</color>
-    <color name="colorFivegockTiertiary">#d3a131</color>
+    <color name="colorFivehockPrimary">#34495e</color>
+    <color name="colorFivehockSecondary">#f39c12</color>
+    <color name="colorFivegockTiertiary">#f1c40f</color>
 
 </resources>

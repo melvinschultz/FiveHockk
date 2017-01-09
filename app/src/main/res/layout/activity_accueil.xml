@@ -10,10 +10,14 @@
         android:text="@string/start_a_quiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:radius="100dp"
         android:id="@+id/ViewStartQuizButton"
         android:layout_weight="0.22"
         android:textSize="24sp"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:elevation="0dp"
+        android:backgroundTint="@color/colorFivehockSecondary"
+        android:textColor="@android:color/background_light" />
 
     <Button
         android:text="@string/add_a_question"
@@ -22,7 +26,9 @@
         android:id="@+id/ViewAddQuestionButton"
         android:layout_weight="0.22"
         android:textSize="24sp"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:backgroundTint="@color/colorFivehockSecondary"
+        android:textColor="@android:color/background_light" />
 
     <Button
         android:text="@string/correct_questions"
@@ -31,14 +37,11 @@
         android:id="@+id/ViewCorrectQuestionButton"
         android:layout_weight="0.22"
         android:textSize="24sp"
-        android:textStyle="normal|bold" />
+        android:textStyle="normal|bold"
+        android:backgroundTint="@color/colorFivehockSecondary" />
 
-    <RoundedImageView
-        android:layout_width="153dp"
-        android:layout_height="65dp"
-        android:radius="10dp"
-        app:srcCompat="@drawable/avatar"
-        android:id="@+id/imageView2"
-        android:cropToPadding="false"
-        android:adjustViewBounds="false" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:src="" />
 </LinearLayout>
