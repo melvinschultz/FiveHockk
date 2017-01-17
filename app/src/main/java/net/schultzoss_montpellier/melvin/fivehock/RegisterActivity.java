@@ -44,6 +44,15 @@ public class RegisterActivity extends AppCompatActivity {
         textViewLoginMe = (TextView) findViewById(R.id.textViewLoginMe);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
+        textViewLoginMe = (TextView) findViewById(R.id.textViewLoginMe);
+
+        textViewLoginMe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
+            }
+        });
+
         /*if (firebaseAuth.getCurrentUser() != null) {
             // start the profile activity here
             finish();
