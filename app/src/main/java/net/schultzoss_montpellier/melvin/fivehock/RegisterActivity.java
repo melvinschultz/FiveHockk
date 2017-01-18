@@ -89,6 +89,8 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View view) {
                 final String username = editTextUsername.getText().toString().trim();
                 final String email = editTextEmail.getText().toString().trim();
+                final String avatar = "url/default.png";
+                final int hockcoins = 0;
                 String password = editTextPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(username)) {
@@ -125,8 +127,9 @@ public class RegisterActivity extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     Toast.makeText(RegisterActivity.this, "Authentication failed" + task.getException(), Toast.LENGTH_SHORT).show();
                                 } else {
+                                    // binding data here only for userId because it is fetch by auth
                                     final String userId = auth.getCurrentUser().getUid();
-                                    createNewUser(userId, username, email);
+                                    createNewUser(userId, username, email, avatar, hockcoins);
 
                                     startActivity(new Intent(RegisterActivity.this, UserAccountActivity.class));
                                     finish();
@@ -143,8 +146,8 @@ public class RegisterActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
-    private void createNewUser(String userId, String username, String email) {
-        User user = new User(username, email);
+    private void createNewUser(String userId, String username, String email, String avatar, int hockcoins) {
+        User user = new User(username, email, avatar, hockcoins);
 
         mFirebaseDatabase.child(userId).setValue(user);
     }
