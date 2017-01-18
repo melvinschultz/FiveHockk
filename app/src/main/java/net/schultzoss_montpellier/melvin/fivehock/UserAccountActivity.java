@@ -8,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class UserAccountActivity extends AppCompatActivity {
 
     @Override
@@ -28,6 +30,16 @@ public class UserAccountActivity extends AppCompatActivity {
                 Intent questionIntent = new Intent(UserAccountActivity.this, QuestionActivity.class);
                 // start the QuestionActivity (show Question Page)
                 UserAccountActivity.this.startActivity(questionIntent);
+            }
+        });
+
+        buttonLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+
+                startActivity(new Intent(UserAccountActivity.this, LoginActivity.class));
+                finish();
             }
         });
 
