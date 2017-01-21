@@ -11,46 +11,16 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="net.schultzoss_montpellier.melvin.fivehock.RegisterActivity">
 
-    <EditText
+    <TextView
+        android:text="Already registered. Login me !"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editTextUsername"
-        android:layout_alignParentEnd="true"
-        android:hint="Username" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:layout_below="@+id/editTextUsername"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editTextEmail"
-        android:layout_alignParentEnd="true"
-        android:hint="Email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPassword"
-        android:ems="10"
-        android:layout_below="@+id/editTextEmail"
-        android:layout_alignParentStart="true"
-        android:id="@+id/editTextPassword"
-        android:layout_alignParentEnd="true"
-        android:hint="Password" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@drawable/logofivehock"
-        android:id="@+id/imageView"
-        android:layout_above="@+id/editTextUsername"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/textViewLoginMe"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="27dp"
+        android:textColor="@color/colorFivegockTiertiary" />
 
     <Button
         android:text="Register"
@@ -58,9 +28,60 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/buttonRegister"
-        android:layout_below="@+id/editTextPassword"
+        android:layout_above="@+id/textViewLoginMe"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="30dp"
         android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/editTextPassword"
+        android:hint="Password"
+        android:layout_marginBottom="47dp"
+        android:layout_above="@+id/textViewLoginMe"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/editTextEmail"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:layout_above="@+id/editTextPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/editTextUsername"
+        android:hint="Username"
+        android:layout_above="@+id/editTextEmail"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:inputType="textPersonName" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/logofivehock"
+        android:id="@+id/imageView"
+        android:layout_above="@+id/editTextEmail"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="38dp" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:visibility="gone"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
