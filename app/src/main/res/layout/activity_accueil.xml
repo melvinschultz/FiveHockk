@@ -1,47 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
 
     <Button
         android:text="@string/start_a_quiz"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
         android:radius="100dp"
         android:id="@+id/ViewStartQuizButton"
-        android:layout_weight="0.22"
         android:textSize="24sp"
         android:textStyle="normal|bold"
         android:elevation="0dp"
         android:backgroundTint="@color/colorFivehockSecondary"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        tools:layout_editor_absoluteX="12dp"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/ViewAddQuestionButton"
+        android:layout_marginBottom="8dp"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
 
     <Button
         android:text="@string/add_a_question"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
         android:id="@+id/ViewAddQuestionButton"
-        android:layout_weight="0.22"
         android:textSize="24sp"
         android:textStyle="normal|bold"
         android:backgroundTint="@color/colorFivehockSecondary"
-        android:textColor="@android:color/background_light" />
+        android:textColor="@android:color/background_light"
+        tools:layout_constraintRight_creator="1"
+        tools:layout_constraintBottom_creator="1"
+        app:layout_constraintBottom_toTopOf="@+id/ViewCorrectQuestionButton"
+        app:layout_constraintRight_toRightOf="@+id/ViewStartQuizButton"
+        tools:layout_constraintLeft_creator="1"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintLeft_toLeftOf="@+id/ViewStartQuizButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:ignore="UnusedAttribute" />
 
     <Button
         android:text="@string/correct_questions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="360dp"
+        android:layout_height="130dp"
         android:id="@+id/ViewCorrectQuestionButton"
-        android:layout_weight="0.22"
         android:textSize="24sp"
         android:textStyle="normal|bold"
-        android:backgroundTint="@color/colorFivehockSecondary" />
+        android:backgroundTint="@color/colorFivehockSecondary"
+        tools:layout_editor_absoluteY="276dp"
+        android:textColor="@android:color/background_light"
+        tools:layout_constraintRight_creator="1"
+        app:layout_constraintRight_toRightOf="@+id/ViewAddQuestionButton"
+        tools:layout_constraintLeft_creator="1"
+        app:layout_constraintLeft_toLeftOf="@+id/ViewAddQuestionButton"
+        app:layout_constraintHorizontal_bias="0.0"
+        tools:ignore="MissingConstraints,UnusedAttribute" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:src="" />
-</LinearLayout>
+        android:id="@+id/profile_image"
+        android:layout_width="81dp"
+        android:layout_height="81dp"
+        android:src="@drawable/avatar"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
+        tools:layout_editor_absoluteY="414dp"
+        tools:layout_editor_absoluteX="12dp" />
+
+    <ProgressBar
+        android:id="@+id/horizontal_progress_bar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="275dp"
+        android:layout_height="wrap_content"
+        android:indeterminate="false"
+        android:max="100"
+        android:minHeight="100dp"
+        android:progress="15"
+        android:progressBackgroundTint="@color/colorPrimaryDark"
+        tools:layout_editor_absoluteY="406dp"
+        tools:layout_editor_absoluteX="93dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Level X"
+        android:textSize="17sp"
+        tools:layout_editor_absoluteY="469dp"
+        tools:layout_editor_absoluteX="93dp" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:autoLink="web"
+        android:gravity="center|bottom"
+        android:text="ViralAndroid.com"
+        android:textSize="27sp"
+        android:textStyle="bold"
+        tools:layout_editor_absoluteY="0dp"
+        tools:layout_editor_absoluteX="0dp" />
+
+</android.support.constraint.ConstraintLayout>
