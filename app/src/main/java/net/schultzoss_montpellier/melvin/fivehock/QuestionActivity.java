@@ -7,7 +7,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class QuestionActivity extends AppCompatActivity {
+
+    private DatabaseReference mFirebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +50,29 @@ public class QuestionActivity extends AppCompatActivity {
                 QuestionActivity.this.startActivity(questionIntent);
             }
         });
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+
+        Query fetchQuestionByKey = mFirebaseDatabase.child("questions").orderByKey();
+        fetchQuestionByKey.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("There are " + dataSnapshot.getChildrenCount() + " questions");
+//                List questions = new ArrayList<>();
+                for (DataSnapshot questionDataSnapshot : dataSnapshot.getChildren()) {
+                    Question question = questionDataSnapshot.getValue(Question.class);
+                    System.out.println(question.getId() + " - " + question.getIdTheme() + " - " + question.getIdCategorie() + " - " + question.getIdReponse() + " - " + question.getQuestion());
+                    // TODO: 22/01/17 -> question.getId() = 0 always, because there is no key for this value in Firebase Database ?? I think it's this... To explore this bug 
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        System.out.println(fetchQuestionByKey);
 
         String question = "Quelle est la capitale de la France ?";
         textViewQuestion.setText(question);
