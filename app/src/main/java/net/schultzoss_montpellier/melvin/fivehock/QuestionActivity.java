@@ -7,7 +7,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class QuestionActivity extends AppCompatActivity {
+
+    private DatabaseReference mFirebaseDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +52,32 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
 
+        mFirebaseDatabase = FirebaseDatabase.getInstance().getReference();
+
+        Query fetchQuestionByKey = mFirebaseDatabase.child("questions").orderByKey();
+        fetchQuestionByKey.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                System.out.println("There are " + dataSnapshot.getChildrenCount() + " questions");
+                List questions = new ArrayList();
+                for (DataSnapshot questionDataSnapshot : dataSnapshot.getChildren()) {
+                    Question question = questionDataSnapshot.getValue(Question.class);
+                    System.out.println(mFirebaseDatabase.child("questions").getKey());
+                    /*questions.add(question.getId());
+                    System.out.println(question.getId() + " - " + question.getIdTheme() + " - " + question.getIdCategorie() + " - " + question.getIdReponse() + " - " + question.getQuestion());*/
+                    // TODO: 22/01/17 -> question.getId() = 0 always, because there is no key for this value in Firebase Database ?? I think it's this... To explore this bug
+                }
+                System.out.println(questions);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        System.out.println(fetchQuestionByKey);
+
         String question = "Quelle est la capitale de la France ?";
         textViewQuestion.setText(question);
 
@@ -51,7 +90,5 @@ public class QuestionActivity extends AppCompatActivity {
         buttonAnswerThree.setText(answers[2]);
         buttonAnswerFour.setText(answers[3]);
         buttonAnswerFive.setText(answers[4]);
-
-        
     }
 }

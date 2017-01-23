@@ -22,6 +22,7 @@ public class UserAccountActivity extends AppCompatActivity {
         final TextView textViewEmail = (TextView) findViewById(R.id.textViewEmail);
         final Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
         final TextView textViewQuestionPage = (TextView) findViewById(R.id.textViewQuestionPage);
+        final TextView textViewAddQuestionPage = (TextView) findViewById(R.id.textViewAddQuestionPage);
 
         // when a dev click on "Question Page"
         textViewQuestionPage.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +31,16 @@ public class UserAccountActivity extends AppCompatActivity {
                 Intent questionIntent = new Intent(UserAccountActivity.this, QuestionActivity.class);
                 // start the QuestionActivity (show Question Page)
                 UserAccountActivity.this.startActivity(questionIntent);
+            }
+        });
+
+        // when a dev click on "Question Page"
+        textViewAddQuestionPage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addQuestionIntent = new Intent(UserAccountActivity.this, AddQuestionActivity.class);
+                // start the AddQuestionActivity (show Add Question Page)
+                UserAccountActivity.this.startActivity(addQuestionIntent);
             }
         });
 

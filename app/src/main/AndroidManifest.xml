@@ -19,8 +19,9 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".UserAccountActivity" />
-        <activity android:name=".ResetPasswordActivity"></activity>
-        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name=".ResetPasswordActivity" />
+        <activity android:name=".QuestionActivity" />
+        <activity android:name=".AddQuestionActivity"></activity>
     </application>
 
 </manifest>
