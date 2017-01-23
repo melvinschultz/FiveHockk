@@ -11,9 +11,4 @@
     <style name="ButtonLogin" parent="Theme.AppCompat.Light">
         <item name="colorControlHighlight">@color/colorFivehockPrimary</item>
     </style>
-
-    <style name="AccueilButton">
-        <item name="android:layout_width">@dimen/activity_horizontal_width_accueil_button</item>
-        <item name="android:layout_height">@dimen/activity_horizontal_height_accueil_button</item>
-    </style>
 </resources>
