@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!--
     <color name="colorPrimary">#34495e</color>
-    <!-- Not dark -->
     <color name="colorPrimaryDark">#f39c12</color>
     <color name="colorAccent">#f1c40f</color>
 
@@ -9,5 +10,15 @@
     <color name="colorFivehockSecondary">#f39c12</color>
     <color name="colorFivegockTiertiary">#f1c40f</color>
 
+    -->
+    <color name="colorPrimary">#34495e</color>
+    <color name="colorPrimaryDark">#f39c12</color>
+    <color name="colorAccent">#f1c40f</color>
+
+    <color name="colorFivehockPrimary">#ea5451</color>
+    <color name="colorFivehockSecondary">#fdc92c</color>
+    <color name="colorFivehockTiertiary">#b3b6b7</color>
+
     <color name="colorFivehockLocked">#6a6a6a</color>
+
 </resources>

@@ -16,7 +16,7 @@
         android:textSize="30sp"
         android:textStyle="normal|bold"
         android:elevation="0dp"
-        android:backgroundTint="@color/colorFivehockSecondary"
+        android:backgroundTint="@color/colorFivehockPrimary"
         android:textColor="@android:color/background_light"
         tools:ignore="MissingConstraints,UnusedAttribute"
         android:layout_marginTop="8dp"
@@ -32,7 +32,7 @@
         android:id="@+id/ViewAddQuestionButton"
         android:textSize="24sp"
         android:textStyle="normal|bold"
-        android:backgroundTint="@color/colorFivehockSecondary"
+        android:backgroundTint="@color/colorFivehockPrimary"
         android:textColor="@android:color/background_light"
         tools:ignore="UnusedAttribute"
         app:layout_constraintHorizontal_bias="0.0"
@@ -60,8 +60,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal3"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal4"
         android:layout_marginBottom="8dp"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
