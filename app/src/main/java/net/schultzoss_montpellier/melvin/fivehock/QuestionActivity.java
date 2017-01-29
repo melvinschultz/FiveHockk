@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
@@ -31,6 +32,8 @@ import java.util.Set;
 public class QuestionActivity extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
+    int count = 0;
+    int categorieId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,52 +57,34 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
 
-        buttonSkip.setOnClickListener(new View.OnClickListener() {
+        /*buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent questionIntent = new Intent(QuestionActivity.this, QuestionActivity.class);
                 QuestionActivity.this.startActivity(questionIntent);
             }
-        });
+        });*/
 
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        final List<Question> allQuestions = new ArrayList<>();
+        final List<Reponse> allReponses = new ArrayList<>();
+        //final Button[] buttonsArray = new Button[] {buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive};
 
-        /*Query fetchQuestionByKey = mDatabase.child("questions").orderByKey();
-        fetchQuestionByKey.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
+        //System.out.println(buttonsArray);
 
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });*/
+//        buttonsArray.add(0, buttonAnswerOne);
+//        buttonsArray.add(1, buttonAnswerTwo);
+//        buttonsArray.add(2, buttonAnswerThree);
+//        buttonsArray.add(3, buttonAnswerFour);
+//        buttonsArray.add(4, buttonAnswerFive);
+//        System.out.println(buttonsArray.get(0).toString());
 
         Query fetchQuestions = mDatabase.child("questions").orderByKey();
         fetchQuestions.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                System.out.println("There are " + dataSnapshot.getChildrenCount() + " questions");
-
-                final List<Question> allQuestions = new ArrayList<>();
+                //System.out.println("There are " + dataSnapshot.getChildrenCount() + " questions");
 
                 for (DataSnapshot questionDataSnapshot : dataSnapshot.getChildren()) {
                     Question question = questionDataSnapshot.getValue(Question.class);
@@ -111,26 +96,51 @@ public class QuestionActivity extends AppCompatActivity {
                     // TODO: 22/01/17 -> question.getId() = 0 always, because there is no key for this value in Firebase Database ?? I think it's this... To explore this bug
                 }
 
+                randomQuestion();
+
                 buttonSkip.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Random random = new Random();
-                        int max = 1;
-                        int min = 0;
-                        int nombreAleatoire = random.nextInt(max - min + 1) + min;
+                        count += 1;
 
-                        System.out.println(nombreAleatoire);
+                        //System.out.println(count);
 
-                        textViewQuestion.setText(allQuestions.get(nombreAleatoire).getEnonce());
-                        System.out.println(allQuestions.get(nombreAleatoire).getEnonce());
+                        if (count >= 5) {
+                            Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
+                            count = 0;
+                        } else {
+                            randomQuestion();
+                        }
                     }
                 });
+            }
 
-                //System.out.println(allQuestions.get(0).getEnonce());
+            private void randomQuestion() {
+                Random random1 = new Random();
+                int max1 = allQuestions.size() - 1;
+                int min1 = 0;
+                int nombreAleatoire1 = random1.nextInt(max1 - min1 + 1) + min1;
 
-                // supprimer doublons
-                /*Set s = new HashSet();
-                s.addAll(allQuestions);*/
+                //System.out.println(nombreAleatoire1);
+
+                textViewQuestion.setText(allQuestions.get(nombreAleatoire1).getEnonce());
+
+                categorieId = allQuestions.get(nombreAleatoire1).getCategorieId();
+
+                System.out.println(allQuestions.get(nombreAleatoire1).getCategorieId());
+//                System.out.println(allQuestions.get(nombreAleatoire1).getEnonce());
+/*
+                Random random2 = new Random();
+                int max2 = allQuestions.size() - 1;
+                int min2 = 0;
+                int nombreAleatoire2 = random2.nextInt(max2 - min2 + 1) + min2;
+
+                System.out.println(nombreAleatoire2);
+
+                buttonsArray[nombreAleatoire2].setText(allQuestions.get(nombreAleatoire1).getReponse());
+
+                System.out.println(buttonsArray[nombreAleatoire2]);*/
+//                System.out.println(allQuestions.get(nombreAleatoire1).getReponse());
             }
 
             @Override
@@ -139,7 +149,37 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
 
-        System.out.println(fetchQuestions);
+        Query fetchReponses = mDatabase.child("reponses").orderByChild("categorieId");
+        fetchReponses.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot reponseDataSnapshot : dataSnapshot.getChildren()) {
+                    Reponse reponse = reponseDataSnapshot.getValue(Reponse.class);
+
+                    allReponses.add(reponse);
+                }
+
+                randomReponse();
+            }
+
+            private void randomReponse() {
+                Random random1 = new Random();
+                int max1 = allReponses.size() - 1;
+                int min1 = 0;
+                int nombreAleatoire1 = random1.nextInt(max1 - min1 + 1) + min1;
+
+                //System.out.println(nombreAleatoire1);
+
+                for (int i = 0; i < allReponses.size(); i++) {
+                    System.out.println(allReponses.get(i).getValeur());
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         /*String question = "Quelle est la capitale de la France ?";
         textViewQuestion.setText(question);
