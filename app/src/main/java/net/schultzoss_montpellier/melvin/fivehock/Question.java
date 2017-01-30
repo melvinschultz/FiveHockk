@@ -4,7 +4,8 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Question {
-    public int categorieId;
+//    public int categorieId;
+    public String categorie;
     public String enonce;
     public String reponse;
 
@@ -12,9 +13,13 @@ public class Question {
 
     }
 
-    public int getCategorieId() { return categorieId; }
+//    public int getCategorieId() { return categorieId; }
+//
+//    public void setCategorieId(int categorieId) { this.categorieId = categorieId; }
 
-    public void setCategorieId(int categorieId) { this.categorieId = categorieId; }
+    public String getCategorie() { return categorie; }
+
+    public void setCategorie(String categorie) { this.categorie = categorie; }
 
     public String getEnonce() {
         return enonce;

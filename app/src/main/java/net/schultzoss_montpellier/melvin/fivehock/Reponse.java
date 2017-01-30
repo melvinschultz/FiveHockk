@@ -5,20 +5,20 @@ package net.schultzoss_montpellier.melvin.fivehock;
  */
 
 public class Reponse {
-    public int categorieId;
+//    public int categorieId;
     public String valeur;
 
     public Reponse() {
 
     }
 
-    public int getCategorieId() {
+    /*public int getCategorieId() {
         return categorieId;
     }
 
     public void setCategorieId(int categorieId) {
         this.categorieId = categorieId;
-    }
+    }*/
 
     public String getValeur() {
         return valeur;

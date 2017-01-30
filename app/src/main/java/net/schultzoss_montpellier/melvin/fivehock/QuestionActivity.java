@@ -31,16 +31,19 @@ import java.util.Set;
 
 public class QuestionActivity extends AppCompatActivity {
 
-    private DatabaseReference mDatabase;
+//    private FirebaseDatabase database;
+//    private DatabaseReference mRef;
     int count = 0;
-    int categorieId;
+    String categorieQuestion;
+    List<Question> allQuestions = new ArrayList<>();
+    List<Reponse> allReponses = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-        final TextView textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
+//        final TextView textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
         final Button buttonAnswerOne = (Button) findViewById(R.id.buttonAnswerOne);
         final Button buttonAnswerTwo = (Button) findViewById(R.id.buttonAnswerTwo);
         final Button buttonAnswerThree = (Button) findViewById(R.id.buttonAnswerThree);
@@ -57,6 +60,9 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });
 
+        fetchAllQuestions();
+    }
+
         /*buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,10 +71,23 @@ public class QuestionActivity extends AppCompatActivity {
             }
         });*/
 
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        /*buttonSkip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                count += 1;
 
-        final List<Question> allQuestions = new ArrayList<>();
-        final List<Reponse> allReponses = new ArrayList<>();
+                //System.out.println(count);
+
+                if (count >= 5) {
+                    Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
+                    count = 0;
+                } else {
+                    randomQuestion();
+                }
+            }
+        });*/
+
+
         //final Button[] buttonsArray = new Button[] {buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive};
 
         //System.out.println(buttonsArray);
@@ -80,67 +99,49 @@ public class QuestionActivity extends AppCompatActivity {
 //        buttonsArray.add(4, buttonAnswerFive);
 //        System.out.println(buttonsArray.get(0).toString());
 
-        Query fetchQuestions = mDatabase.child("questions").orderByKey();
-        fetchQuestions.addValueEventListener(new ValueEventListener() {
+    protected void fetchAllQuestions() {
+        final TextView textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
+
+        // Get the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        // Get the database URL
+        DatabaseReference myRef = database.getReference();
+        System.out.println(myRef);
+
+        // Get the questions URL
+        DatabaseReference mQuestionsRef = myRef.child("questions");
+        System.out.println(mQuestionsRef);
+
+        // Get all questions datas
+        mQuestionsRef.orderByKey().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                //System.out.println("There are " + dataSnapshot.getChildrenCount() + " questions");
+
+                // Println datas in questions node
+//                System.out.println(dataSnapshot);
 
                 for (DataSnapshot questionDataSnapshot : dataSnapshot.getChildren()) {
+                    String questionDataSnapshotKey = questionDataSnapshot.getKey();
                     Question question = questionDataSnapshot.getValue(Question.class);
-//                    System.out.println(mDatabase..getKey());
-//                    allQuestions.add(question);
-                    allQuestions.add(question);
 
-                    // System.out.println(question.getEnonce() + " - " + question.getReponse());
-                    // TODO: 22/01/17 -> question.getId() = 0 always, because there is no key for this value in Firebase Database ?? I think it's this... To explore this bug
+//                    System.out.println(questionDataSnapshotKey);
+//                    System.out.println(question);
+
+                    allQuestions.add(question);
                 }
 
-                randomQuestion();
-
-                buttonSkip.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        count += 1;
-
-                        //System.out.println(count);
-
-                        if (count >= 5) {
-                            Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
-                            count = 0;
-                        } else {
-                            randomQuestion();
-                        }
-                    }
-                });
-            }
-
-            private void randomQuestion() {
+                // Get a random number in order to get question randomly
                 Random random1 = new Random();
                 int max1 = allQuestions.size() - 1;
                 int min1 = 0;
                 int nombreAleatoire1 = random1.nextInt(max1 - min1 + 1) + min1;
 
-                //System.out.println(nombreAleatoire1);
-
                 textViewQuestion.setText(allQuestions.get(nombreAleatoire1).getEnonce());
 
-                categorieId = allQuestions.get(nombreAleatoire1).getCategorieId();
+                categorieQuestion = allQuestions.get(nombreAleatoire1).getCategorie();
 
-                System.out.println(allQuestions.get(nombreAleatoire1).getCategorieId());
-//                System.out.println(allQuestions.get(nombreAleatoire1).getEnonce());
-/*
-                Random random2 = new Random();
-                int max2 = allQuestions.size() - 1;
-                int min2 = 0;
-                int nombreAleatoire2 = random2.nextInt(max2 - min2 + 1) + min2;
-
-                System.out.println(nombreAleatoire2);
-
-                buttonsArray[nombreAleatoire2].setText(allQuestions.get(nombreAleatoire1).getReponse());
-
-                System.out.println(buttonsArray[nombreAleatoire2]);*/
-//                System.out.println(allQuestions.get(nombreAleatoire1).getReponse());
+                fetchReponsesByCategorie(categorieQuestion);
             }
 
             @Override
@@ -148,31 +149,53 @@ public class QuestionActivity extends AppCompatActivity {
 
             }
         });
+    }
 
-        Query fetchReponses = mDatabase.child("reponses").orderByChild("categorieId");
-        fetchReponses.addValueEventListener(new ValueEventListener() {
+    protected void fetchReponsesByCategorie(String categorieQuestion) {
+        System.out.println(categorieQuestion);
+
+        // Get the database
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+        // Get the database URL
+        DatabaseReference myRef = database.getReference();
+        System.out.println(myRef);
+
+        // Get the reponses URL
+        DatabaseReference mReponsesRef = myRef.child("reponses");
+        System.out.println(mReponsesRef);
+
+        // Get all questions datas
+        mReponsesRef.orderByChild(categorieQuestion).equalTo(true).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot reponseDataSnapshot : dataSnapshot.getChildren()) {
-                    Reponse reponse = reponseDataSnapshot.getValue(Reponse.class);
 
-                    allReponses.add(reponse);
+                try {
+                    System.out.println(dataSnapshot);
+
+                    // Println datas in questions node
+                    System.out.println(dataSnapshot.getChildrenCount());
+
+                    for (DataSnapshot reponseDataSnapshot : dataSnapshot.getChildren()) {
+                        String reponseDataSnapshotKey = reponseDataSnapshot.getKey();
+                        Reponse reponse = reponseDataSnapshot.getValue(Reponse.class);
+
+//                    System.out.println(reponseDataSnapshotKey);
+//                    System.out.println(reponse);
+
+                        allReponses.add(reponse);
+                    }
+
+
+                    /*System.out.println(allReponses.get(0).getValeur());
+                    System.out.println(allReponses.get(1));
+                    System.out.println(allReponses.get(2));
+                    System.out.println(allReponses.get(3));
+                    System.out.println(allReponses.get(4));*/
+                } catch (Throwable e) {
+                    e.printStackTrace();
                 }
 
-                randomReponse();
-            }
-
-            private void randomReponse() {
-                Random random1 = new Random();
-                int max1 = allReponses.size() - 1;
-                int min1 = 0;
-                int nombreAleatoire1 = random1.nextInt(max1 - min1 + 1) + min1;
-
-                //System.out.println(nombreAleatoire1);
-
-                for (int i = 0; i < allReponses.size(); i++) {
-                    System.out.println(allReponses.get(i).getValeur());
-                }
             }
 
             @Override
@@ -180,18 +203,5 @@ public class QuestionActivity extends AppCompatActivity {
 
             }
         });
-
-        /*String question = "Quelle est la capitale de la France ?";
-        textViewQuestion.setText(question);
-
-        String[] answers = new String[] { "Paris", "Marseille", "Grenoble", "Nice", "Calais" };
-//        String[] answers = { "Paris", "Marseille", "Grenoble", "Nice", "Calais" };
-        String goodAnswer = "Paris";
-
-        buttonAnswerOne.setText(answers[0]);
-        buttonAnswerTwo.setText(answers[1]);
-        buttonAnswerThree.setText(answers[2]);
-        buttonAnswerFour.setText(answers[3]);
-        buttonAnswerFive.setText(answers[4]);*/
     }
 }
