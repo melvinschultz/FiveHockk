@@ -4,18 +4,24 @@ import com.google.firebase.database.IgnoreExtraProperties;
 
 @IgnoreExtraProperties
 public class Question {
-//    public int categorieId;
+    public String bonneReponse;
     public String categorie;
     public String enonce;
-    public String reponse;
+    public String reponseA;
+    public String reponseB;
+    public String reponseC;
+    public String reponseD;
+    public String reponseE;
 
     public Question() {
 
     }
 
-//    public int getCategorieId() { return categorieId; }
-//
-//    public void setCategorieId(int categorieId) { this.categorieId = categorieId; }
+    public String getBonneReponse() { return bonneReponse; }
+
+    public void setBonneReponse(String bonneReponse) {
+        this.bonneReponse = bonneReponse;
+    }
 
     public String getCategorie() { return categorie; }
 
@@ -29,11 +35,43 @@ public class Question {
         this.enonce = enonce;
     }
 
-    public String getReponse() {
-        return reponse;
+    public String getReponseA() {
+        return reponseA;
     }
 
-    public void setReponse(String reponse) {
-        this.reponse = reponse;
+    public void setReponseA(String reponseA) {
+        this.reponseA = reponseA;
+    }
+
+    public String getReponseB() {
+        return reponseB;
+    }
+
+    public void setReponseB(String reponseB) {
+        this.reponseB = reponseB;
+    }
+
+    public String getReponseC() {
+        return reponseC;
+    }
+
+    public void setReponseC(String reponseC) {
+        this.reponseC = reponseC;
+    }
+
+    public String getReponseD() {
+        return reponseD;
+    }
+
+    public void setReponseD(String reponseD) {
+        this.reponseD = reponseD;
+    }
+
+    public String getReponseE() {
+        return reponseE;
+    }
+
+    public void setReponseE(String reponseE) {
+        this.reponseE = reponseE;
     }
 }

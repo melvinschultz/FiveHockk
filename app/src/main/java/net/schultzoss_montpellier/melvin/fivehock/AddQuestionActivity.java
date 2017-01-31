@@ -70,7 +70,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         Question question = new Question();
 
         question.setEnonce(enonce);
-        question.setReponse(reponse);
+//        question.setReponse(reponse);
 
         DatabaseReference newQuestion = questionsReference.push();
 

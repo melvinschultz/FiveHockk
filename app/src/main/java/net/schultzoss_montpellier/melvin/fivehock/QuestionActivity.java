@@ -31,24 +31,20 @@ import java.util.Set;
 
 public class QuestionActivity extends AppCompatActivity {
 
-//    private FirebaseDatabase database;
-//    private DatabaseReference mRef;
     int count = 0;
-    String categorieQuestion;
     List<Question> allQuestions = new ArrayList<>();
-    List<Reponse> allReponses = new ArrayList<>();
+    String bonneReponse;
+    String reponseA;
+    String reponseB;
+    String reponseC;
+    String reponseD;
+    String reponseE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
-//        final TextView textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
-        final Button buttonAnswerOne = (Button) findViewById(R.id.buttonAnswerOne);
-        final Button buttonAnswerTwo = (Button) findViewById(R.id.buttonAnswerTwo);
-        final Button buttonAnswerThree = (Button) findViewById(R.id.buttonAnswerThree);
-        final Button buttonAnswerFour = (Button) findViewById(R.id.buttonAnswerFour);
-        final Button buttonAnswerFive = (Button) findViewById(R.id.buttonAnswerFive);
         final Button buttonCancel = (Button) findViewById(R.id.buttonCancel);
         final Button buttonSkip = (Button) findViewById(R.id.buttonSkip);
 
@@ -61,46 +57,31 @@ public class QuestionActivity extends AppCompatActivity {
         });
 
         fetchAllQuestions();
-    }
 
-        /*buttonSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent questionIntent = new Intent(QuestionActivity.this, QuestionActivity.class);
-                QuestionActivity.this.startActivity(questionIntent);
-            }
-        });*/
-
-        /*buttonSkip.setOnClickListener(new View.OnClickListener() {
+        buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 count += 1;
-
-                //System.out.println(count);
 
                 if (count >= 5) {
                     Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
                     count = 0;
                 } else {
-                    randomQuestion();
+                    fetchAllQuestions();
                 }
             }
-        });*/
-
-
-        //final Button[] buttonsArray = new Button[] {buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive};
-
-        //System.out.println(buttonsArray);
-
-//        buttonsArray.add(0, buttonAnswerOne);
-//        buttonsArray.add(1, buttonAnswerTwo);
-//        buttonsArray.add(2, buttonAnswerThree);
-//        buttonsArray.add(3, buttonAnswerFour);
-//        buttonsArray.add(4, buttonAnswerFive);
-//        System.out.println(buttonsArray.get(0).toString());
+        });
+    }
 
     protected void fetchAllQuestions() {
+        System.out.println(bonneReponse);
+
         final TextView textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
+        final Button buttonAnswerOne = (Button) findViewById(R.id.buttonAnswerOne);
+        final Button buttonAnswerTwo = (Button) findViewById(R.id.buttonAnswerTwo);
+        final Button buttonAnswerThree = (Button) findViewById(R.id.buttonAnswerThree);
+        final Button buttonAnswerFour = (Button) findViewById(R.id.buttonAnswerFour);
+        final Button buttonAnswerFive = (Button) findViewById(R.id.buttonAnswerFive);
 
         // Get the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -117,16 +98,9 @@ public class QuestionActivity extends AppCompatActivity {
         mQuestionsRef.orderByKey().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                // Println datas in questions node
-//                System.out.println(dataSnapshot);
-
                 for (DataSnapshot questionDataSnapshot : dataSnapshot.getChildren()) {
                     String questionDataSnapshotKey = questionDataSnapshot.getKey();
                     Question question = questionDataSnapshot.getValue(Question.class);
-
-//                    System.out.println(questionDataSnapshotKey);
-//                    System.out.println(question);
 
                     allQuestions.add(question);
                 }
@@ -138,64 +112,97 @@ public class QuestionActivity extends AppCompatActivity {
                 int nombreAleatoire1 = random1.nextInt(max1 - min1 + 1) + min1;
 
                 textViewQuestion.setText(allQuestions.get(nombreAleatoire1).getEnonce());
+                bonneReponse = allQuestions.get(nombreAleatoire1).getBonneReponse().intern();
+                buttonAnswerOne.setText(allQuestions.get(nombreAleatoire1).getReponseA());
+                buttonAnswerTwo.setText(allQuestions.get(nombreAleatoire1).getReponseB());
+                buttonAnswerThree.setText(allQuestions.get(nombreAleatoire1).getReponseC());
+                buttonAnswerFour.setText(allQuestions.get(nombreAleatoire1).getReponseD());
+                buttonAnswerFive.setText(allQuestions.get(nombreAleatoire1).getReponseE());
 
-                categorieQuestion = allQuestions.get(nombreAleatoire1).getCategorie();
+                buttonAnswerOne.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        System.out.println(buttonAnswerOne.getText());
 
-                fetchReponsesByCategorie(categorieQuestion);
-            }
+                        reponseA = buttonAnswerOne.getText().toString().intern();
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-    }
-
-    protected void fetchReponsesByCategorie(String categorieQuestion) {
-        System.out.println(categorieQuestion);
-
-        // Get the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-
-        // Get the database URL
-        DatabaseReference myRef = database.getReference();
-        System.out.println(myRef);
-
-        // Get the reponses URL
-        DatabaseReference mReponsesRef = myRef.child("reponses");
-        System.out.println(mReponsesRef);
-
-        // Get all questions datas
-        mReponsesRef.orderByChild(categorieQuestion).equalTo(true).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                try {
-                    System.out.println(dataSnapshot);
-
-                    // Println datas in questions node
-                    System.out.println(dataSnapshot.getChildrenCount());
-
-                    for (DataSnapshot reponseDataSnapshot : dataSnapshot.getChildren()) {
-                        String reponseDataSnapshotKey = reponseDataSnapshot.getKey();
-                        Reponse reponse = reponseDataSnapshot.getValue(Reponse.class);
-
-//                    System.out.println(reponseDataSnapshotKey);
-//                    System.out.println(reponse);
-
-                        allReponses.add(reponse);
+                        if (reponseA == bonneReponse) {
+                            System.out.println(reponseA + ": VRAI !");
+                            Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                        } else {
+                            System.out.println(reponseA + ": FAUX !");
+                            Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                        }
                     }
+                });
 
+                buttonAnswerTwo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        System.out.println(buttonAnswerTwo.getText());
 
-                    /*System.out.println(allReponses.get(0).getValeur());
-                    System.out.println(allReponses.get(1));
-                    System.out.println(allReponses.get(2));
-                    System.out.println(allReponses.get(3));
-                    System.out.println(allReponses.get(4));*/
-                } catch (Throwable e) {
-                    e.printStackTrace();
-                }
+                        reponseB = buttonAnswerTwo.getText().toString().intern();
 
+                        if (reponseB == bonneReponse) {
+                            System.out.println(reponseB + ": VRAI !");
+                            Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                        } else {
+                            System.out.println(reponseB + ": FAUX !");
+                            Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                buttonAnswerThree.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        System.out.println(buttonAnswerThree.getText());
+
+                        reponseC = buttonAnswerThree.getText().toString().intern();
+
+                        if (reponseC == bonneReponse) {
+                            System.out.println(reponseC + ": VRAI !");
+                            Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                        } else {
+                            System.out.println(reponseC + ": FAUX !");
+                            Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                buttonAnswerFour.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        System.out.println(buttonAnswerFour.getText());
+
+                        reponseD = buttonAnswerFour.getText().toString().intern();
+
+                        if (reponseD == bonneReponse) {
+                            System.out.println(reponseD + ": VRAI !");
+                            Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                        } else {
+                            System.out.println(reponseD + ": FAUX !");
+                            Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+                buttonAnswerFive.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        System.out.println(buttonAnswerFive.getText());
+
+                        reponseE = buttonAnswerFive.getText().toString().intern();
+
+                        if (reponseE == bonneReponse) {
+                            System.out.println(reponseE + ": VRAI !");
+                            Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                        } else {
+                            System.out.println(reponseE + ": FAUX !");
+                            Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
             }
 
             @Override
