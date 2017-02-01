@@ -62,6 +62,5 @@ public class UserAccountActivity extends AppCompatActivity {
         textViewWelcomeMessage.setText(message);
         textViewUsername.setText(username);
         textViewEmail.setText(email);
-
     }
 }

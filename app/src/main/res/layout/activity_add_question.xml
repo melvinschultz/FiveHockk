@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:id="@+id/editTextQuestion"
-        android:hint="Question"
+        android:hint="Enoncé"
         android:inputType="text"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
@@ -36,14 +36,69 @@
         android:layout_height="wrap_content"
         android:inputType="text"
         android:ems="10"
-        android:id="@+id/editTextGoodAnswer"
-        android:hint="Good answer"
+        android:id="@+id/editTextOptionA"
+        android:hint="Option A"
         android:layout_below="@+id/editTextQuestion"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editTextOptionB"
+        android:hint="Option B"
+        android:layout_below="@+id/editTextOptionA"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editTextOptionC"
+        android:hint="Option C"
+        android:layout_below="@+id/editTextOptionB"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editTextOptionD"
+        android:hint="Option D"
+        android:layout_below="@+id/editTextOptionC"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editTextOptionE"
+        android:hint="Option E"
+        android:layout_below="@+id/editTextOptionD"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editTextGoodAnswer"
+        android:hint="Bonne réponse"
+        android:layout_below="@+id/editTextOptionE"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
     <Button
-        android:text="Add Question"
+        android:text="Ajouter une question"
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

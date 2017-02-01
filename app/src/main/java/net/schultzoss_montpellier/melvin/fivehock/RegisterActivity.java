@@ -91,6 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
                 final String email = editTextEmail.getText().toString().trim();
                 final String avatar = "url/default.png";
                 final int hockcoins = 0;
+                final int xp = 0;
                 String password = editTextPassword.getText().toString().trim();
 
                 if (TextUtils.isEmpty(username)) {
@@ -129,7 +130,7 @@ public class RegisterActivity extends AppCompatActivity {
                                 } else {
                                     // binding data here only for userId because it is fetch by auth
                                     final String userId = auth.getCurrentUser().getUid();
-                                    createNewUser(userId, username, email, avatar, hockcoins);
+                                    createNewUser(userId, username, email, avatar, hockcoins, xp);
 
                                     startActivity(new Intent(RegisterActivity.this, UserAccountActivity.class));
                                     finish();
@@ -146,8 +147,8 @@ public class RegisterActivity extends AppCompatActivity {
         progressBar.setVisibility(View.GONE);
     }
 
-    private void createNewUser(String userId, String username, String email, String avatar, int hockcoins) {
-        User user = new User(username, email, avatar, hockcoins);
+    private void createNewUser(String userId, String username, String email, String avatar, int hockcoins, int xp) {
+        User user = new User(username, email, avatar, hockcoins, xp);
 
         mFirebaseDatabase.child(userId).setValue(user);
     }

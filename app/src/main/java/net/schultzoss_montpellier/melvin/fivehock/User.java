@@ -8,15 +8,17 @@ public class User {
     public String email;
     public String avatar;
     public int hockcoins;
+    public int xp;
 
     public User() {
 
     }
 
-    public User(String username, String email, String avatar, int hockcoins) {
+    public User(String username, String email, String avatar, int hockcoins, int xp) {
         this.username = username;
         this.email = email;
         this.avatar = avatar;
         this.hockcoins = hockcoins;
+        this.xp = xp;
     }
 }
