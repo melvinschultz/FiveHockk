@@ -21,6 +21,7 @@ import java.util.Random;
 public class QuestionActivity extends AppCompatActivity {
 
     int count = 0;
+    int userPoints = 0;
     List<Question> allQuestions = new ArrayList<>();
     String bonneReponse;
     String reponseA;
@@ -53,8 +54,13 @@ public class QuestionActivity extends AppCompatActivity {
                 count += 1;
 
                 if (count >= 5) {
-                    Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(QuestionActivity.this, "You have finish this quiz ! You win "+userPoints+" points !", Toast.LENGTH_SHORT).show();
                     count = 0;
+
+                    // on redirige vers la page de résultat du quiz
+                    Intent quizScoreIntent = new Intent(QuestionActivity.this, QuizScoreActivity.class);
+                    quizScoreIntent.putExtra("userPoints", userPoints);
+                    QuestionActivity.this.startActivity(quizScoreIntent);
                 } else {
                     fetchAllQuestions();
                 }
@@ -116,9 +122,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseA == bonneReponse) {
                             System.out.println(reponseA + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+
+                            userPoints += 2;
+                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseA + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+
+                            System.out.println(userPoints + " points");
                         }
                     }
                 });
@@ -133,9 +144,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseB == bonneReponse) {
                             System.out.println(reponseB + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+
+                            userPoints += 2;
+                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseB + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+
+                            System.out.println(userPoints + " points");
                         }
                     }
                 });
@@ -150,9 +166,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseC == bonneReponse) {
                             System.out.println(reponseC + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+
+                            userPoints += 2;
+                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseC + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+
+                            System.out.println(userPoints + " points");
                         }
                     }
                 });
@@ -167,9 +188,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseD == bonneReponse) {
                             System.out.println(reponseD + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+
+                            userPoints += 2;
+                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseD + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+
+                            System.out.println(userPoints + " points");
                         }
                     }
                 });
@@ -184,9 +210,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseE == bonneReponse) {
                             System.out.println(reponseE + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+
+                            userPoints += 2;
+                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseE + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+
+                            System.out.println(userPoints + " points");
                         }
                     }
                 });
