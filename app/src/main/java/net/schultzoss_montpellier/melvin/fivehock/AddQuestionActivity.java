@@ -65,27 +65,27 @@ public class AddQuestionActivity extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(reponseA)) {
-                    Toast.makeText(getApplicationContext(), "Please enter a good answer for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter an option A for this question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseB)) {
-                    Toast.makeText(getApplicationContext(), "Please enter a good answer for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter an option B for this question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseC)) {
-                    Toast.makeText(getApplicationContext(), "Please enter a good answer for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter an option C for this question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseD)) {
-                    Toast.makeText(getApplicationContext(), "Please enter a good answer for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter an option D for this question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseE)) {
-                    Toast.makeText(getApplicationContext(), "Please enter a good answer for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please enter an option E for this question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
