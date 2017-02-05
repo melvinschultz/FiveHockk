@@ -5,10 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class UserAccountActivity extends AppCompatActivity {
 
@@ -54,13 +58,28 @@ public class UserAccountActivity extends AppCompatActivity {
             }
         });
 
-        Intent intent = getIntent();
-        String username = intent.getStringExtra("username");
-        String email = intent.getStringExtra("email");
+        FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
+        DatabaseReference myRef = database.getReference(); // Get database reference
+        DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
 
-        String message = "Hello " + username + ", welcome to your user account !";
-        textViewWelcomeMessage.setText(message);
-        textViewUsername.setText(username);
-        textViewEmail.setText(email);
+        mUsersRef.addValueEventListener(new ValueEventListener() {
+             @Override
+             public void onDataChange(DataSnapshot dataSnapshot) {
+                 // Get current user UID
+                 String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                 // Get current user profile using uid
+                 User user = dataSnapshot.child(uID).getValue(User.class);
+                 String message = "Hello " + user.username + ", welcome to your user account !";
+
+                 textViewWelcomeMessage.setText(message);
+                 textViewUsername.setText(user.username);
+                 textViewEmail.setText(user.email);
+             }
+
+             @Override
+             public void onCancelled(DatabaseError databaseError) {
+
+             }
+        });
     }
 }
