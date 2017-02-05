@@ -69,7 +69,7 @@ public class UserAccountActivity extends AppCompatActivity {
                  String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  // Get current user profile using uid
                  User user = dataSnapshot.child(uID).getValue(User.class);
-                 String message = "Hello " + user.username + ", welcome to your user account !";
+                 String message = "Welcome";
 
                  textViewWelcomeMessage.setText(message);
                  textViewUsername.setText(user.username);
