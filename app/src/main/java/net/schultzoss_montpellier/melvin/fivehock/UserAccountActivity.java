@@ -26,9 +26,6 @@ public class UserAccountActivity extends AppCompatActivity {
         final TextView textViewEmail = (TextView) findViewById(R.id.textViewEmail);
         final Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
         final Button buttonBack = (Button) findViewById(R.id.buttonBackMenu);
-        final TextView textViewQuestionPage = (TextView) findViewById(R.id.textViewQuestionPage);
-        final TextView textViewAddQuestionPage = (TextView) findViewById(R.id.textViewAddQuestionPage);
-
 
         // when a dev click on "Question Page"
         buttonBack.setOnClickListener(new View.OnClickListener() {
