@@ -1,6 +1,7 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -31,6 +32,8 @@ public class QuestionActivity extends AppCompatActivity {
     String reponseC;
     String reponseD;
     String reponseE;
+
+    private Handler mHandler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -257,17 +260,24 @@ public class QuestionActivity extends AppCompatActivity {
     protected void skipToNextQuestion() {
         count += 1;
 
-        if (count >= 5) {
-            Toast.makeText(QuestionActivity.this, "You have finish this quiz ! You win "+userPoints+" points !", Toast.LENGTH_SHORT).show();
-            count = 0;
-            alreadyAsked.clear();
+        // après 2,5 secondes le code est exécuté (changement de question ou affichage page score selon le nombre de question déjà posée)
+        mHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (count >= 5) {
+                    Toast.makeText(QuestionActivity.this, "Vous avez fini le quiz, voici votre score : "+userPoints+" points !", Toast.LENGTH_SHORT).show();
+                    count = 0;
+                    alreadyAsked.clear();
 
-            // on redirige vers la page de résultat du quiz
-            Intent quizScoreIntent = new Intent(QuestionActivity.this, QuizScoreActivity.class);
-            quizScoreIntent.putExtra("userPoints", userPoints);
-            QuestionActivity.this.startActivity(quizScoreIntent);
-        } else {
-            fetchAllQuestions();
-        }
+                    // on redirige vers la page de résultat du quiz
+                    Intent quizScoreIntent = new Intent(QuestionActivity.this, QuizScoreActivity.class);
+                    quizScoreIntent.putExtra("userPoints", userPoints);
+                    QuestionActivity.this.startActivity(quizScoreIntent);
+                } else {
+                    fetchAllQuestions();
+                }
+            }
+        }, 2500); // 2,5 seconds
+
     }
 }
