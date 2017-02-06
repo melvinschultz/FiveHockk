@@ -1,7 +1,11 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,12 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import static net.schultzoss_montpellier.melvin.fivehock.R.color.colorFivehockPrimary;
+
 public class QuestionActivity extends AppCompatActivity {
 
     int count = 0;
     int userPoints = 0;
     String currentQuestion;
-    List<String> alreadyAsked = new ArrayList<String>();
+    List<String> alreadyAsked = new ArrayList<>();
     List<Question> allQuestions = new ArrayList<>();
     String bonneReponse;
     String reponseA;
@@ -33,8 +39,9 @@ public class QuestionActivity extends AppCompatActivity {
     String reponseD;
     String reponseE;
 
-    private Handler mHandler = new Handler();
+    private Handler mHandler = new Handler(); // créé pour le timer
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,6 +83,7 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void fetchAllQuestions() {
         final TextView textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
         final Button buttonAnswerOne = (Button) findViewById(R.id.buttonAnswerOne);
@@ -83,6 +91,12 @@ public class QuestionActivity extends AppCompatActivity {
         final Button buttonAnswerThree = (Button) findViewById(R.id.buttonAnswerThree);
         final Button buttonAnswerFour = (Button) findViewById(R.id.buttonAnswerFour);
         final Button buttonAnswerFive = (Button) findViewById(R.id.buttonAnswerFive);
+
+        buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(colorFivehockPrimary)));
+        buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(colorFivehockPrimary)));
+        buttonAnswerThree.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(colorFivehockPrimary)));
+        buttonAnswerFour.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(colorFivehockPrimary)));
+        buttonAnswerFive.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(colorFivehockPrimary)));
 
         // Get the database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -130,6 +144,7 @@ public class QuestionActivity extends AppCompatActivity {
                 buttonAnswerFive.setText(allQuestions.get(nombreAleatoire1).getReponseE());
 
                 buttonAnswerOne.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onClick(View view) {
                         System.out.println(buttonAnswerOne.getText());
@@ -139,12 +154,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseA == bonneReponse) {
                             System.out.println(reponseA + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             userPoints += 2;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseA + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
                             System.out.println(userPoints + " points");
                         }
@@ -154,6 +171,7 @@ public class QuestionActivity extends AppCompatActivity {
                 });
 
                 buttonAnswerTwo.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onClick(View view) {
                         System.out.println(buttonAnswerTwo.getText());
@@ -163,12 +181,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseB == bonneReponse) {
                             System.out.println(reponseB + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             userPoints += 2;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseB + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
                             System.out.println(userPoints + " points");
                         }
@@ -178,6 +198,7 @@ public class QuestionActivity extends AppCompatActivity {
                 });
 
                 buttonAnswerThree.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onClick(View view) {
                         System.out.println(buttonAnswerThree.getText());
@@ -187,12 +208,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseC == bonneReponse) {
                             System.out.println(reponseC + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerThree.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             userPoints += 2;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseC + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerThree.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
                             System.out.println(userPoints + " points");
                         }
@@ -202,6 +225,7 @@ public class QuestionActivity extends AppCompatActivity {
                 });
 
                 buttonAnswerFour.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onClick(View view) {
                         System.out.println(buttonAnswerFour.getText());
@@ -211,12 +235,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseD == bonneReponse) {
                             System.out.println(reponseD + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerFour.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             userPoints += 2;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseD + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerFour.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
                             System.out.println(userPoints + " points");
                         }
@@ -226,6 +252,7 @@ public class QuestionActivity extends AppCompatActivity {
                 });
 
                 buttonAnswerFive.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
                     @Override
                     public void onClick(View view) {
                         System.out.println(buttonAnswerFive.getText());
@@ -235,12 +262,14 @@ public class QuestionActivity extends AppCompatActivity {
                         if (reponseE == bonneReponse) {
                             System.out.println(reponseE + ": VRAI !");
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerFive.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             userPoints += 2;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseE + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
+                            buttonAnswerFive.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
                             System.out.println(userPoints + " points");
                         }
@@ -262,6 +291,7 @@ public class QuestionActivity extends AppCompatActivity {
 
         // après 2,5 secondes le code est exécuté (changement de question ou affichage page score selon le nombre de question déjà posée)
         mHandler.postDelayed(new Runnable() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void run() {
                 if (count >= 5) {
