@@ -1,7 +1,10 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,6 +26,16 @@ public class QuizScoreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz_score);
 
         final TextView textViewUserPoints = (TextView) findViewById(R.id.textViewUserPoints);
+        final Button buttonBack = (Button) findViewById(R.id.buttonBackMenu);
+
+        // back to menu
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent accueilActivity = new Intent(QuizScoreActivity.this, AccueilActivity.class);
+                QuizScoreActivity.this.startActivity(accueilActivity);
+            }
+        });
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
