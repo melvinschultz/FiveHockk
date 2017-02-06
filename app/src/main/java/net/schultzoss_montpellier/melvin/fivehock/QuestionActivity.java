@@ -22,6 +22,8 @@ public class QuestionActivity extends AppCompatActivity {
 
     int count = 0;
     int userPoints = 0;
+    String currentQuestion;
+    List<String> alreadyAsked = new ArrayList<String>();
     List<Question> allQuestions = new ArrayList<>();
     String bonneReponse;
     String reponseA;
@@ -103,6 +105,15 @@ public class QuestionActivity extends AppCompatActivity {
                 int max1 = allQuestions.size() - 1;
                 int min1 = 0;
                 int nombreAleatoire1 = random1.nextInt(max1 - min1 + 1) + min1;
+
+                currentQuestion = allQuestions.get(nombreAleatoire1).getId();
+                if (alreadyAsked.contains(currentQuestion)) {
+                    System.out.println("Question déjà posée");
+                    fetchAllQuestions();
+                } else {
+                    alreadyAsked.add(currentQuestion);
+                    System.out.println(alreadyAsked);
+                }
 
                 textViewQuestion.setText(allQuestions.get(nombreAleatoire1).getEnonce());
                 bonneReponse = allQuestions.get(nombreAleatoire1).getBonneReponse().intern();
