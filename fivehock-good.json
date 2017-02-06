@@ -1,17 +1,9 @@
 {
-  "categories" : {
-    "categorie1" : {
-      "categorieName" : "Capitales",
-      "themes" : {
-        "theme1" : true
-      }
-    }
-  },
   "questions" : {
     "-KbeJuKMK-KUGcZnOt4R" : {
       "bonneReponse" : "Paris",
-      "categorie" : "categorie1",
       "enonce" : "Quelle est la capitale de la France ?",
+      "id" : "-KbeJuKMK-KUGcZnOt4R",
       "reponseA" : "Paris",
       "reponseB" : "Marseille",
       "reponseC" : "Lyon",
@@ -20,8 +12,8 @@
     },
     "-KbeKe47AWj28D7kFoAt" : {
       "bonneReponse" : "Blanc",
-      "categorie" : "categorie2",
       "enonce" : "Quelle est la couleur du cheval blanc d'Henri IV ?",
+      "id" : "-KbeKe47AWj28D7kFoAt",
       "reponseA" : "Vert",
       "reponseB" : "Gris",
       "reponseC" : "Violet",
@@ -30,8 +22,8 @@
     },
     "-KbeLM4hT4G-X1RSepx6" : {
       "bonneReponse" : "The Hobbit",
-      "categorie" : "categorie3",
       "enonce" : "Dans quel film peut-on voir l'histoire d'un hobbit ?",
+      "id" : "-KbeLM4hT4G-X1RSepx6",
       "reponseA" : "Scream",
       "reponseB" : "Avatar",
       "reponseC" : "The Hobbit",
@@ -40,62 +32,63 @@
     },
     "-KbeLbCI2UoWSkwm47F4" : {
       "bonneReponse" : "TPMP",
-      "categorie" : "categorie4",
       "enonce" : "Dans quelle émission le présentateur est surnommé \"Baba\" ?",
+      "id" : "-KbeLbCI2UoWSkwm47F4",
       "reponseA" : "C'est mon choix",
       "reponseB" : "TPMP",
       "reponseC" : "VTEP",
       "reponseD" : "Le bigdil",
       "reponseE" : "Qui veut gagner des millions ?"
+    },
+    "-Kbuf2_CuNxff4mL9z9l" : {
+      "bonneReponse" : "Domange",
+      "enonce" : "Quel est le nom de famille de Baptiste ?",
+      "id" : "-Kbuf2_CuNxff4mL9z9l",
+      "reponseA" : "Marmet",
+      "reponseB" : "Beauvarlet",
+      "reponseC" : "Briot",
+      "reponseD" : "Domange",
+      "reponseE" : "Schultz"
+    },
+    "-KcHcmsK3B3ZutgSr_Om" : {
+      "bonneReponse" : "Février",
+      "enonce" : "Le Super Bowl se déroule en...",
+      "id" : "-KcHcmsK3B3ZutgSr_Om",
+      "reponseA" : "Janvier",
+      "reponseB" : "Février",
+      "reponseC" : "Mars",
+      "reponseD" : "Avril",
+      "reponseE" : "Mai"
     }
-  },
-  "reponses" : {
-    "reponse1" : {
-      "categorie1" : true,
-      "valeur" : "Paris"
-    },
-    "reponse2" : {
-      "categorie1" : true,
-      "valeur" : "Marseille"
-    },
-    "reponse3" : {
-      "categorie1" : true,
-      "valeur" : "Toulouse"
-    },
-    "reponse4" : {
-      "categorie1" : true,
-      "valeur" : "Lyon"
-    },
-    "reponse5" : {
-      "categorie1" : true,
-      "valeur" : "Lille"
-    },
-    "reponse6" : {
-      "categorie2" : true,
-      "valeur" : "Blanc"
-    }
-  },
-  "themes" : {
-    "theme1" : "Géographie"
   },
   "users" : {
     "bIGEpbkAZgdTqHOglSIGhxwlWms2" : {
       "avatar" : "url/default.png",
       "email" : "guigui@thug.life",
       "hockcoins" : 0,
-      "username" : "testestest"
+      "username" : "testestest",
+      "xp" : 20
+    },
+    "jYZrqE4dhxVO1yvLusdUFgA7u8z2" : {
+      "avatar" : "url/default.png",
+      "email" : "melvinschultz9@gmail.com",
+      "hockcoins" : 0,
+      "username" : "Melvin",
+      "xp" : 48
     },
     "u2WkRmmrbtZ92h51KpbIYBJM8Gq1" : {
       "avatar" : "url/default.png",
       "email" : "baptiste9@gmail.com",
       "hockcoins" : 0,
-      "username" : "baptiste"
+      "username" : "baptiste",
+      "xp" : 0
     },
     "xRbiu9vfL3gSMQXFQJtwZVMewch2" : {
       "avatar" : "url/default.png",
       "email" : "test@test.com",
       "hockcoins" : 0,
-      "username" : "Melvintest"
+      "username" : "Melvintest",
+      "xp" : 10
     }
   }
 }

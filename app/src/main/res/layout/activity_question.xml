@@ -16,7 +16,7 @@
         tools:layout_editor_absoluteY="16dp" />
 
     <TextView
-        android:text="Question 1 ?"
+        android:text=""
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/textViewQuestion"
@@ -35,7 +35,7 @@
         android:layout_marginBottom="8dp" />
 
     <Button
-        android:text="@string/answer_1"
+        android:text=""
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/buttonAnswerOne"
@@ -50,7 +50,7 @@
         android:layout_marginStart="2dp" />
 
     <Button
-        android:text="Answer 2"
+        android:text=""
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/buttonAnswerTwo"
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal4" />
 
     <Button
-        android:text="Answer 3"
+        android:text=""
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/buttonAnswerThree"
@@ -77,7 +77,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal5" />
 
     <Button
-        android:text="Answer 4"
+        android:text=""
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/buttonAnswerFour"
@@ -91,7 +91,7 @@
         app:layout_constraintLeft_toLeftOf="parent" />
 
     <Button
-        android:text="Answer 5"
+        android:text=""
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:id="@+id/buttonAnswerFive"

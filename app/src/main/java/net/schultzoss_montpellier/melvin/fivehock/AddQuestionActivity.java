@@ -1,5 +1,6 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -49,6 +50,16 @@ public class AddQuestionActivity extends AppCompatActivity {
         editTextOptionE = (EditText) findViewById(R.id.editTextOptionE);
         editTextGoodAnswer = (EditText) findViewById(R.id.editTextGoodAnswer);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
+
+        final Button buttonBack = (Button) findViewById(R.id.buttonBackMenu);
+        // back to menu
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent accueilActivity = new Intent(AddQuestionActivity.this, AccueilActivity.class);
+                AddQuestionActivity.this.startActivity(accueilActivity);
+            }
+        });
 
         buttonAddQuestion.setOnClickListener(new View.OnClickListener() {
             @Override
