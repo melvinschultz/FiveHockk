@@ -27,13 +27,15 @@ public class AddQuestionActivity extends AppCompatActivity {
 
     private DatabaseReference questionsReference;
 
+    boolean isBonneReponseInOptions = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_question);
 
         // Get firabase database instance and set true for offline persistence
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         // get reference to users node
         questionsReference = FirebaseDatabase.getInstance().getReference("questions");
@@ -60,43 +62,55 @@ public class AddQuestionActivity extends AppCompatActivity {
                 final String bonneReponse = editTextGoodAnswer.getText().toString().trim();
 
                 if (TextUtils.isEmpty(enonce)) {
-                    Toast.makeText(getApplicationContext(), "Please enter a question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Merci d'entrer un énoncé pour cette question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseA)) {
-                    Toast.makeText(getApplicationContext(), "Please enter an option A for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Merci d'entrer un choix A pour cette question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseB)) {
-                    Toast.makeText(getApplicationContext(), "Please enter an option B for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Merci d'entrer un choix B pour cette question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseC)) {
-                    Toast.makeText(getApplicationContext(), "Please enter an option C for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Merci d'entrer un choix C pour cette question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseD)) {
-                    Toast.makeText(getApplicationContext(), "Please enter an option D for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Merci d'entrer un choix D pour cette question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(reponseE)) {
-                    Toast.makeText(getApplicationContext(), "Please enter an option E for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Merci d'entrer un choix E pour cette question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (TextUtils.isEmpty(bonneReponse)) {
-                    Toast.makeText(getApplicationContext(), "Please enter a good answer for this question", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Merci d'entrer une bonne réponse pour cette question", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 progressBar.setVisibility(View.VISIBLE);
 
-                addQuestion(enonce, reponseA, reponseB, reponseC, reponseD, reponseE, bonneReponse);
+                String tableauReponses[] = {reponseA, reponseB, reponseC, reponseD, reponseE};
+                for (int i = 0; i < tableauReponses.length; i++) {
+                    if (tableauReponses[i].matches(bonneReponse)) {
+                        isBonneReponseInOptions = true;
+                        System.out.println(tableauReponses[i] + " == " + bonneReponse);
+                    }
+                }
+
+                if (isBonneReponseInOptions) {
+                    addQuestion(enonce, reponseA, reponseB, reponseC, reponseD, reponseE, bonneReponse);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Merci de renseigner une bonne réponse présente dans les options proposées", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
