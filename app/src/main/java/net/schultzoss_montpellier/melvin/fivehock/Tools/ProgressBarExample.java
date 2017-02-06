@@ -20,7 +20,7 @@ public class ProgressBarExample extends AppCompatActivity {
         setContentView(R.layout.activity_accueil);
 
         androidProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
-        textView = (TextView) findViewById(R.id.textView);
+        textView = (TextView) findViewById(R.id.TextViewLevel);
         //Start progressing
         new Thread(new Runnable() {
             public void run() {
