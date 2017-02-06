@@ -122,6 +122,7 @@ public class AddQuestionActivity extends AppCompatActivity {
 
         newQuestion.setValue(question);
 
+        // TODO: ne fonctionne pas, il faut le mettre dans un listener à la suite de l'ajout de la question dans firebase, genre OnSuccessListener ou similaire
         progressBar.setVisibility(View.GONE);
     }
 }
