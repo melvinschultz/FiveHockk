@@ -33,7 +33,7 @@ public class AddQuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_question);
 
         // Get firabase database instance and set true for offline persistence
-        FirebaseDatabase.getInstance().setPersistenceEnabled(true);
+        // FirebaseDatabase.getInstance().setPersistenceEnabled(true);
 
         // get reference to users node
         questionsReference = FirebaseDatabase.getInstance().getReference("questions");
