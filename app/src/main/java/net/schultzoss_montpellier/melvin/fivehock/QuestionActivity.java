@@ -53,7 +53,9 @@ public class QuestionActivity extends AppCompatActivity {
         buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                count += 1;
+                skipToNextQuestion();
+
+                /*count += 1;
 
                 if (count >= 5) {
                     Toast.makeText(QuestionActivity.this, "You have finish this quiz ! You win "+userPoints+" points !", Toast.LENGTH_SHORT).show();
@@ -66,7 +68,7 @@ public class QuestionActivity extends AppCompatActivity {
                     QuestionActivity.this.startActivity(quizScoreIntent);
                 } else {
                     fetchAllQuestions();
-                }
+                }*/
             }
         });
     }
@@ -143,6 +145,8 @@ public class QuestionActivity extends AppCompatActivity {
 
                             System.out.println(userPoints + " points");
                         }
+
+                        skipToNextQuestion();
                     }
                 });
 
@@ -165,6 +169,8 @@ public class QuestionActivity extends AppCompatActivity {
 
                             System.out.println(userPoints + " points");
                         }
+
+                        skipToNextQuestion();
                     }
                 });
 
@@ -187,6 +193,8 @@ public class QuestionActivity extends AppCompatActivity {
 
                             System.out.println(userPoints + " points");
                         }
+
+                        skipToNextQuestion();
                     }
                 });
 
@@ -209,6 +217,8 @@ public class QuestionActivity extends AppCompatActivity {
 
                             System.out.println(userPoints + " points");
                         }
+
+                        skipToNextQuestion();
                     }
                 });
 
@@ -231,6 +241,8 @@ public class QuestionActivity extends AppCompatActivity {
 
                             System.out.println(userPoints + " points");
                         }
+
+                        skipToNextQuestion();
                     }
                 });
             }
@@ -240,5 +252,22 @@ public class QuestionActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    protected void skipToNextQuestion() {
+        count += 1;
+
+        if (count >= 5) {
+            Toast.makeText(QuestionActivity.this, "You have finish this quiz ! You win "+userPoints+" points !", Toast.LENGTH_SHORT).show();
+            count = 0;
+            alreadyAsked.clear();
+
+            // on redirige vers la page de résultat du quiz
+            Intent quizScoreIntent = new Intent(QuestionActivity.this, QuizScoreActivity.class);
+            quizScoreIntent.putExtra("userPoints", userPoints);
+            QuestionActivity.this.startActivity(quizScoreIntent);
+        } else {
+            fetchAllQuestions();
+        }
     }
 }
