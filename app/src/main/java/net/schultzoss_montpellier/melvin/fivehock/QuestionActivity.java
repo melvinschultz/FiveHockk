@@ -22,7 +22,6 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.Timer;
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -136,18 +135,6 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                         }
-                        Timer timer = new Timer();
-
-                        if (System.currentTimeMillis() > 3000) {
-                            count += 1;
-
-                            if (count >= 5) {
-                                Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
-                                count = 0;
-                            } else {
-                                fetchAllQuestions();
-                            }
-                        }
                     }
                 });
 
@@ -167,14 +154,6 @@ public class QuestionActivity extends AppCompatActivity {
                             System.out.println(reponseB + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                        }
-                        count += 1;
-
-                        if (count >= 5) {
-                            Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
-                            count = 0;
-                        } else {
-                            fetchAllQuestions();
                         }
                     }
                 });
@@ -196,18 +175,6 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerThree.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                         }
-                        Timer timer = new Timer();
-
-                        if (System.currentTimeMillis() > 3000) {
-                            count += 1;
-
-                            if (count >= 5) {
-                                Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
-                                count = 0;
-                            } else {
-                                fetchAllQuestions();
-                            }
-                        }
                     }
                 });
 
@@ -228,18 +195,6 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerFour.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
                         }
-                        Timer timer = new Timer();
-
-                        if (System.currentTimeMillis() > 3000) {
-                            count += 1;
-
-                            if (count >= 5) {
-                                Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
-                                count = 0;
-                            } else {
-                                fetchAllQuestions();
-                            }
-                        }
                     }
                 });
 
@@ -259,18 +214,6 @@ public class QuestionActivity extends AppCompatActivity {
                             System.out.println(reponseE + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerFive.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
-                        }
-                        Timer timer = new Timer();
-
-                        if (System.currentTimeMillis() > 3000) {
-                            count += 1;
-
-                            if (count >= 5) {
-                                Toast.makeText(QuestionActivity.this, "You have finish this quiz !", Toast.LENGTH_SHORT).show();
-                                count = 0;
-                            } else {
-                                fetchAllQuestions();
-                            }
                         }
                     }
                 });
