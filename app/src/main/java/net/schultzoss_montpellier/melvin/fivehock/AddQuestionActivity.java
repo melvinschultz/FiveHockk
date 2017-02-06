@@ -124,8 +124,11 @@ public class AddQuestionActivity extends AppCompatActivity {
     }
 
     private void addQuestion(String enonce, String reponseA, String reponseB, String reponseC, String reponseD, String reponseE, String bonneReponse) {
+        DatabaseReference newQuestion = questionsReference.push();
+
         Question question = new Question();
 
+        question.setId(newQuestion.getKey());
         question.setEnonce(enonce);
         question.setReponseA(reponseA);
         question.setReponseB(reponseB);
@@ -133,8 +136,6 @@ public class AddQuestionActivity extends AppCompatActivity {
         question.setReponseD(reponseD);
         question.setReponseE(reponseE);
         question.setBonneReponse(bonneReponse);
-
-        DatabaseReference newQuestion = questionsReference.push();
 
         newQuestion.setValue(question);
 
