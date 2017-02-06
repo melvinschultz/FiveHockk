@@ -30,7 +30,7 @@ public class AccueilActivity extends AppCompatActivity {
         final Button viewStartQuizButton = (Button) findViewById(R.id.ViewStartQuizButton);
         final Button viewAddQuestionButton = (Button) findViewById(R.id.ViewAddQuestionButton);
         final Button viewCorrectQuestionButton = (Button) findViewById(R.id.ViewCorrectQuestionButton);
-        final TextView textViewLevel = (TextView) findViewById(R.id.TextViewLevel);
+        final TextView textViewLevel = (TextView) findViewById(R.id.TextViewExperience);
         final ProgressBar horizontalProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
         final CircleImageView profilePicture = (CircleImageView) findViewById(R.id.profile_image);
 

@@ -5,6 +5,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -14,6 +16,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
+import static java.lang.Math.ceil;
+
 public class UserAccountActivity extends AppCompatActivity {
 
     @Override
@@ -21,9 +27,13 @@ public class UserAccountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_account);
 
-        final TextView textViewWelcomeMessage = (TextView) findViewById(R.id.textViewWelcomeMessage);
         final TextView textViewUsername = (TextView) findViewById(R.id.textViewUsername);
-        final TextView textViewEmail = (TextView) findViewById(R.id.textViewEmail);
+        final EditText mailEdit = (EditText) findViewById(R.id.mailEditUserAccount);
+
+        final TextView textViewLevel = (TextView) findViewById(R.id.TextViewExperience);
+        final ProgressBar horizontalProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
+        final CircleImageView profilePicture = (CircleImageView) findViewById(R.id.profile_image);
+
         final Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
         final Button buttonBack = (Button) findViewById(R.id.buttonBackMenu);
 
@@ -58,11 +68,19 @@ public class UserAccountActivity extends AppCompatActivity {
                  String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  // Get current user profile using uid
                  User user = dataSnapshot.child(uID).getValue(User.class);
-                 String message = "Welcome";
-
-                 textViewWelcomeMessage.setText(message);
                  textViewUsername.setText(user.username);
-                 textViewEmail.setText(user.email);
+                 mailEdit.setText(user.email);
+
+                 int experience = user.xp;
+                 if(experience == 0){
+                     textViewLevel.setText("Level 1");
+                 }else{
+                     int level = (int) ceil(Math.round(experience/10)+1);
+                     textViewLevel.setText("Level "+level);
+                 }
+                 int currentXp = (experience%10)*10;
+
+                 horizontalProgressBar.setProgress(currentXp);
              }
 
              @Override
