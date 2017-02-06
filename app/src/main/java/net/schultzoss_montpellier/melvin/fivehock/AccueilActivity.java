@@ -1,6 +1,8 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,12 +11,19 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import net.schultzoss_montpellier.melvin.fivehock.Tasks.RetrieveImageTask;
+
+import java.util.concurrent.ExecutionException;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -37,6 +46,12 @@ public class AccueilActivity extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
         DatabaseReference myRef = database.getReference(); // Get database reference
         DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
+
+        FirebaseStorage mStorage = FirebaseStorage.getInstance();
+        StorageReference storageRef = mStorage.getReferenceFromUrl("gs://fivehock-7caab.appspot.com");
+        final StorageReference imagesRef = storageRef.child("images");
+
+        final String defaultImg = "44aS3pW.jpg";
 
         // when click on "Start a quiz"
         viewStartQuizButton.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +109,20 @@ public class AccueilActivity extends AppCompatActivity {
                 int currentXp = (experience%10)*10;
 
                 horizontalProgressBar.setProgress(currentXp);
+
+                imagesRef.child(user.avatar.equals("")?defaultImg:user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        try {
+                            // Download was started on main thread which crashed the app,
+                            // so a thread dedicated to the download is used
+                            Bitmap bmp = new RetrieveImageTask().execute(uri.toString()).get();
+                            profilePicture.setImageBitmap(bmp);
+                        } catch (InterruptedException | ExecutionException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
 
             }
 
