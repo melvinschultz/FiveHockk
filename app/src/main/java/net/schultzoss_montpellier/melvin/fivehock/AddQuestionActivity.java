@@ -109,6 +109,7 @@ public class AddQuestionActivity extends AppCompatActivity {
                 if (isBonneReponseInOptions) {
                     addQuestion(enonce, reponseA, reponseB, reponseC, reponseD, reponseE, bonneReponse);
                     Toast.makeText(getApplicationContext(), "Votre question a bien été ajoutée", Toast.LENGTH_SHORT).show();
+                    isBonneReponseInOptions = false;
                 } else {
                     Toast.makeText(getApplicationContext(), "Merci de renseigner une bonne réponse présente dans les options proposées", Toast.LENGTH_SHORT).show();
                 }
