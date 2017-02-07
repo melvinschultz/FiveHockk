@@ -1,10 +1,15 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -17,15 +22,22 @@ import com.google.firebase.database.ValueEventListener;
 public class QuizScoreActivity extends AppCompatActivity {
 
     private int userPoints = 0;
-    private TextView textViewUserPoints;
-    private TextView textViewUserXp;
+    private int userGoodAnswers = 0;
+//    private TextView textViewUserPoints;
+//    private TextView textViewUserXp;
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_score);
 
         final TextView textViewUserPoints = (TextView) findViewById(R.id.textViewUserPoints);
+        final TextView textViewUserXp = (TextView) findViewById(R.id.textViewUserXp);
+
+        final ProgressBar circleProgressBar = (ProgressBar) findViewById(R.id.circle_progress_bar);
+
+
         final Button buttonBack = (Button) findViewById(R.id.buttonBackMenu);
 
         // back to menu
@@ -40,8 +52,15 @@ public class QuizScoreActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             userPoints = extras.getInt("userPoints");
+            userGoodAnswers = extras.getInt("userPoints")/2;
         }
         textViewUserPoints.setText(Integer.toString(userPoints));
+        textViewUserXp.setText("+ " + Integer.toString(userPoints) + " xp");
+
+        ObjectAnimator animation = ObjectAnimator.ofInt(circleProgressBar, "progress", 0, userPoints); // see this max value coming back here, we animate towards that value
+        animation.setDuration (500); // 500 milliseconds
+        animation.setInterpolator(new DecelerateInterpolator());
+        animation.start();
 
         // Get current user UID
         final String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
