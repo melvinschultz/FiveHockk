@@ -86,6 +86,8 @@ public class QuestionActivity extends AppCompatActivity {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     protected void fetchAllQuestions() {
+        goodAnswer = false;
+
         final TextView textViewQuestion = (TextView) findViewById(R.id.textViewQuestion);
         final Button buttonAnswerOne = (Button) findViewById(R.id.buttonAnswerOne);
         final Button buttonAnswerTwo = (Button) findViewById(R.id.buttonAnswerTwo);
@@ -164,17 +166,17 @@ public class QuestionActivity extends AppCompatActivity {
                             buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             goodAnswer = true;
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
 
                         } else {
                             System.out.println(reponseA + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         }
 
-                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+//                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
                         skipToNextQuestion(goodAnswer);
                     }
                 });
@@ -193,16 +195,16 @@ public class QuestionActivity extends AppCompatActivity {
                             buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             goodAnswer = true;
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseB + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         }
 
-                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+//                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
                         skipToNextQuestion(goodAnswer);
                     }
                 });
@@ -221,16 +223,16 @@ public class QuestionActivity extends AppCompatActivity {
                             buttonAnswerThree.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             goodAnswer = true;
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseC + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerThree.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         }
 
-                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+//                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
                         skipToNextQuestion(goodAnswer);
                     }
                 });
@@ -249,16 +251,16 @@ public class QuestionActivity extends AppCompatActivity {
                             buttonAnswerFour.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             goodAnswer = true;
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseD + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerFour.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         }
 
-                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+//                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
                         skipToNextQuestion(goodAnswer);
                     }
                 });
@@ -277,16 +279,16 @@ public class QuestionActivity extends AppCompatActivity {
                             buttonAnswerFive.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
                             goodAnswer = true;
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseE + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerFive.setBackgroundTintList(ColorStateList.valueOf(Color.RED));
 
-                            System.out.println(userPoints + " points");
+//                            System.out.println(userPoints + " points");
                         }
 
-                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+//                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
                         skipToNextQuestion(goodAnswer);
                     }
                 });
@@ -309,6 +311,7 @@ public class QuestionActivity extends AppCompatActivity {
             public void run() {
                 if (goodAnswer) {
                     userPoints += 2;
+                    System.out.println(userPoints);
                 }
 
                 if (count >= 5) {
