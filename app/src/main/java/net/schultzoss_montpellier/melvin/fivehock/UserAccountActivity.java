@@ -126,9 +126,11 @@ public class UserAccountActivity extends AppCompatActivity {
                  int experience = user.xp;
                  if(experience == 0){
                      textViewLevel.setText("Level 1");
-                 }else{
-                     int level = (int) ceil(Math.round(experience/10)+1);
-                     
+                 }else {
+                     int level = (int) ceil(Math.round(experience / 10) + 1);
+                 }
+                 int currentXp = (experience%10)*10;
+
                  horizontalProgressBar.setProgress(currentXp);
                  textViewExperience.setText("Experience : "+experience%10+" / "+10);
 
