@@ -21,4 +21,12 @@ public class User {
         this.hockcoins = hockcoins;
         this.xp = xp;
     }
+
+    public int getXp() {
+        return xp;
+    }
+
+    public void setXp(int xp) {
+        this.xp = xp;
+    }
 }

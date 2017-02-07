@@ -1,5 +1,6 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -18,24 +19,36 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import net.schultzoss_montpellier.melvin.fivehock.Tasks.RetrieveImageTask;
+import java.util.concurrent.ExecutionException;
 import de.hdodenhof.circleimageview.CircleImageView;
-
 import static java.lang.Math.ceil;
-
+import de.hdodenhof.circleimageview.CircleImageView;
+import static java.lang.Math.ceil;
 import android.os.Bundle;
-
 import java.io.File;
 
 public class UserAccountActivity extends AppCompatActivity {
+    Context mContext = this;
+    FirebaseStorage mStorage = FirebaseStorage.getInstance();
+    StorageReference storageRef = mStorage.getReferenceFromUrl("gs://fivehock-7caab.appspot.com");
+    StorageReference imagesRef = storageRef.child("images");
+
+    String defaultImg = "44aS3pW.jpg";
+
+    FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
+    DatabaseReference myRef = database.getReference(); // Get database reference
+    DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
 
     private static final int SELECTED_PICTURE = 1;
 
@@ -45,20 +58,18 @@ public class UserAccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_user_account);
 
         final TextView textViewUsername = (TextView) findViewById(R.id.textViewUsername);
+
         final EditText mailEdit = (EditText) findViewById(R.id.mailEditUserAccount);
         final TextView textViewLevel = (TextView) findViewById(R.id.textViewLevel);
         final TextView textViewExperience = (TextView) findViewById(R.id.TextViewExperience);
         final ProgressBar horizontalProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
-
-        //final CircleImageView profilePicture = (CircleImageView) findViewById(R.id.profile_image);
-        //final ImageView profilePicture = (ImageView) findViewById(R.id.imageView2);
-
-
+        
+        final CircleImageView profilePicture = (CircleImageView) findViewById(R.id.profile_image);
+        
         final ImageView changeAvatar = (ImageView) findViewById(R.id.changeAvatar);
         final Button changeEmail = (Button) findViewById(R.id.changeUserEmail);
         final Button buttonLogout = (Button) findViewById(R.id.buttonLogout);
         final Button buttonBack = (Button) findViewById(R.id.buttonBackMenu);
-
 
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
         DatabaseReference myRef = database.getReference(); // Get database reference
@@ -84,6 +95,7 @@ public class UserAccountActivity extends AppCompatActivity {
             }
         });
 
+
         changeEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -107,6 +119,7 @@ public class UserAccountActivity extends AppCompatActivity {
                  // Get current user profile using uid
                  User user = dataSnapshot.child(uID).getValue(User.class);
                  textViewUsername.setText(user.username);
+
                  mailEdit.setText(user.email);
 
                  //Level and XP of user
@@ -115,14 +128,24 @@ public class UserAccountActivity extends AppCompatActivity {
                      textViewLevel.setText("Level 1");
                  }else{
                      int level = (int) ceil(Math.round(experience/10)+1);
-                     textViewLevel.setText("Level "+level);
-                 }
-                 int currentXp = (experience%10)*10;
+                     
                  horizontalProgressBar.setProgress(currentXp);
                  textViewExperience.setText("Experience : "+experience%10+" / "+10);
 
-                 //set path to the image
-                 //profilePicture.
+                 imagesRef.child(user.avatar.equals("")?defaultImg:user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                     @Override
+                     public void onSuccess(Uri uri) {
+                         try {
+                             // Download was started on main thread which crashed the app,
+                             // so a thread dedicated to the download is used
+                             Bitmap bmp = new RetrieveImageTask().execute(uri.toString()).get();
+                             profilePicture.setImageBitmap(bmp);
+                         } catch (InterruptedException | ExecutionException e) {
+                             e.printStackTrace();
+                         }
+                     }
+                 });
+
              }
 
              @Override
