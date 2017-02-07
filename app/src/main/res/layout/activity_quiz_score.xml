@@ -64,10 +64,10 @@
         android:progressDrawable="@drawable/circular" />
 
     <TextView
-    android:text="score"
+    android:text="good"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-        android:id="@+id/textViewUserPoints"
+        android:id="@+id/textViewUserGoodAnswers"
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignBottom="@+id/textView7"
         android:layout_alignEnd="@+id/textViewScoreQuiz" />

@@ -5,7 +5,7 @@
         android:useLevel="true"
         android:innerRadiusRatio="2.3"
         android:shape="ring"
-        android:thickness="3.8sp" >
+        android:thickness="19sp" >
         <solid android:color="@color/colorFivehockPrimary" />
     </shape>
     </item>

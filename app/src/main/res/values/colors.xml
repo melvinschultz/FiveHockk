@@ -18,6 +18,8 @@
     <color name="colorFivehockPrimary">#ea5451</color>
     <color name="colorFivehockSecondary">#fdc92c</color>
     <color name="colorFivehockTiertiary">#b3b6b7</color>
+    <color name="colorGoodAnswer">#0f7543</color>
+    <color name="colorFalseAnswer">#e42724</color>
 
     <color name="colorFivehockLocked">#6a6a6a</color>
 

@@ -32,7 +32,7 @@ public class QuizScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz_score);
 
-        final TextView textViewUserPoints = (TextView) findViewById(R.id.textViewUserPoints);
+        final TextView textViewUserGoodAnswers = (TextView) findViewById(R.id.textViewUserGoodAnswers);
         final TextView textViewUserXp = (TextView) findViewById(R.id.textViewUserXp);
 
         final ProgressBar circleProgressBar = (ProgressBar) findViewById(R.id.circle_progress_bar);
@@ -54,13 +54,16 @@ public class QuizScoreActivity extends AppCompatActivity {
             userPoints = extras.getInt("userPoints");
             userGoodAnswers = extras.getInt("userPoints")/2;
         }
-        textViewUserPoints.setText(Integer.toString(userPoints));
+        textViewUserGoodAnswers.setText(Integer.toString(userGoodAnswers));
         textViewUserXp.setText("+ " + Integer.toString(userPoints) + " xp");
 
-        ObjectAnimator animation = ObjectAnimator.ofInt(circleProgressBar, "progress", 0, userPoints); // see this max value coming back here, we animate towards that value
-        animation.setDuration (500); // 500 milliseconds
-        animation.setInterpolator(new DecelerateInterpolator());
-        animation.start();
+
+        if (userPoints > 0) {
+            ObjectAnimator animation = ObjectAnimator.ofInt(circleProgressBar, "progress", 0, userPoints); // see this max value coming back here, we animate towards that value
+            animation.setDuration (1000); // 1000 milliseconds
+            animation.setInterpolator(new DecelerateInterpolator());
+            animation.start();
+        }
 
         // Get current user UID
         final String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
