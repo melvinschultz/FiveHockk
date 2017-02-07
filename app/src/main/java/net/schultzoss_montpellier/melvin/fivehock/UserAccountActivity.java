@@ -38,6 +38,8 @@ import static java.lang.Math.ceil;
 import de.hdodenhof.circleimageview.CircleImageView;
 import static java.lang.Math.ceil;
 import android.os.Bundle;
+import android.widget.Toast;
+
 import java.io.File;
 
 public class UserAccountActivity extends AppCompatActivity {
@@ -79,7 +81,7 @@ public class UserAccountActivity extends AppCompatActivity {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
         DatabaseReference myRef = database.getReference(); // Get database reference
-        DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
+        final DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,7 +106,9 @@ public class UserAccountActivity extends AppCompatActivity {
         changeEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                final String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                mUsersRef.child(uID).child("email").setValue(mailEdit.getText().toString().trim());
+                Toast.makeText(UserAccountActivity.this, "Email changed", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -136,6 +140,7 @@ public class UserAccountActivity extends AppCompatActivity {
                      textViewLevel.setText("Level 1");
                  } else {
                      int level = (int) ceil(Math.round(experience / 10) + 1);
+                     textViewLevel.setText("Level "+level);
                  }
                  int currentXp = (experience%10)*10;
 
@@ -227,6 +232,7 @@ public class UserAccountActivity extends AppCompatActivity {
                                         // so a thread dedicated to the download is used
                                         Bitmap bmp = new RetrieveImageTask().execute(uri.toString()).get();
                                         profilePicture.setImageBitmap(bmp);
+                                        Toast.makeText(UserAccountActivity.this, "Your avatar has been set", Toast.LENGTH_SHORT).show();
                                     } catch (InterruptedException | ExecutionException e) {
                                         e.printStackTrace();
                                     }
