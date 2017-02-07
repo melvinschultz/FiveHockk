@@ -34,7 +34,7 @@ dependencies {
     compile 'com.facebook.android:facebook-android-sdk:[4,5)'
 
     // CircleImageView
-    compile files('lib/CircleImageView-master/gradle/wrapper/gradle-wrapper.jar')
+    compile files('lib/gradle-wrapper.jar')
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
 }

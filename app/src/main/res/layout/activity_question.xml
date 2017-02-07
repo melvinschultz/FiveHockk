@@ -47,7 +47,8 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_horizontal2"
         app:layout_constraintBottom_toTopOf="@+id/guideline_horizontal4"
         app:layout_constraintRight_toLeftOf="@+id/guideline_vertical1"
-        android:layout_marginStart="2dp" />
+        android:layout_marginStart="2dp"
+        tools:targetApi="lollipop" />
 
     <Button
         android:text=""
