@@ -29,6 +29,7 @@ public class QuestionActivity extends AppCompatActivity {
 
     int count = 0;
     int userPoints = 0;
+    boolean goodAnswer = false;
     String currentQuestion;
     List<String> alreadyAsked = new ArrayList<>();
     List<Question> allQuestions = new ArrayList<>();
@@ -63,7 +64,7 @@ public class QuestionActivity extends AppCompatActivity {
         buttonSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                skipToNextQuestion();
+                skipToNextQuestion(goodAnswer);
 
                 /*count += 1;
 
@@ -91,6 +92,12 @@ public class QuestionActivity extends AppCompatActivity {
         final Button buttonAnswerThree = (Button) findViewById(R.id.buttonAnswerThree);
         final Button buttonAnswerFour = (Button) findViewById(R.id.buttonAnswerFour);
         final Button buttonAnswerFive = (Button) findViewById(R.id.buttonAnswerFive);
+
+        buttonAnswerOne.setEnabled(true);
+        buttonAnswerTwo.setEnabled(true);
+        buttonAnswerThree.setEnabled(true);
+        buttonAnswerFour.setEnabled(true);
+        buttonAnswerFive.setEnabled(true);
 
         buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(colorFivehockPrimary)));
         buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(colorFivehockPrimary)));
@@ -156,8 +163,9 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerOne.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
-                            userPoints += 2;
+                            goodAnswer = true;
                             System.out.println(userPoints + " points");
+
                         } else {
                             System.out.println(reponseA + ": FAUX !");
                             Toast.makeText(QuestionActivity.this, "Mauvaise réponse !", Toast.LENGTH_SHORT).show();
@@ -166,7 +174,8 @@ public class QuestionActivity extends AppCompatActivity {
                             System.out.println(userPoints + " points");
                         }
 
-                        skipToNextQuestion();
+                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+                        skipToNextQuestion(goodAnswer);
                     }
                 });
 
@@ -183,7 +192,7 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerTwo.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
-                            userPoints += 2;
+                            goodAnswer = true;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseB + ": FAUX !");
@@ -193,7 +202,8 @@ public class QuestionActivity extends AppCompatActivity {
                             System.out.println(userPoints + " points");
                         }
 
-                        skipToNextQuestion();
+                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+                        skipToNextQuestion(goodAnswer);
                     }
                 });
 
@@ -210,7 +220,7 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerThree.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
-                            userPoints += 2;
+                            goodAnswer = true;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseC + ": FAUX !");
@@ -220,7 +230,8 @@ public class QuestionActivity extends AppCompatActivity {
                             System.out.println(userPoints + " points");
                         }
 
-                        skipToNextQuestion();
+                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+                        skipToNextQuestion(goodAnswer);
                     }
                 });
 
@@ -237,7 +248,7 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerFour.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
-                            userPoints += 2;
+                            goodAnswer = true;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseD + ": FAUX !");
@@ -247,7 +258,8 @@ public class QuestionActivity extends AppCompatActivity {
                             System.out.println(userPoints + " points");
                         }
 
-                        skipToNextQuestion();
+                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+                        skipToNextQuestion(goodAnswer);
                     }
                 });
 
@@ -264,7 +276,7 @@ public class QuestionActivity extends AppCompatActivity {
                             Toast.makeText(QuestionActivity.this, "Bonne réponse !", Toast.LENGTH_SHORT).show();
                             buttonAnswerFive.setBackgroundTintList(ColorStateList.valueOf(Color.GREEN));
 
-                            userPoints += 2;
+                            goodAnswer = true;
                             System.out.println(userPoints + " points");
                         } else {
                             System.out.println(reponseE + ": FAUX !");
@@ -274,7 +286,8 @@ public class QuestionActivity extends AppCompatActivity {
                             System.out.println(userPoints + " points");
                         }
 
-                        skipToNextQuestion();
+                        disabledButtons(buttonAnswerOne, buttonAnswerTwo, buttonAnswerThree, buttonAnswerFour, buttonAnswerFive);
+                        skipToNextQuestion(goodAnswer);
                     }
                 });
             }
@@ -286,7 +299,7 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
-    protected void skipToNextQuestion() {
+    protected void skipToNextQuestion(final boolean goodAnswer) {
         count += 1;
 
         // après 2,5 secondes le code est exécuté (changement de question ou affichage page score selon le nombre de question déjà posée)
@@ -294,6 +307,10 @@ public class QuestionActivity extends AppCompatActivity {
             @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void run() {
+                if (goodAnswer) {
+                    userPoints += 2;
+                }
+
                 if (count >= 5) {
                     Toast.makeText(QuestionActivity.this, "Vous avez fini le quiz, voici votre score : "+userPoints+" points !", Toast.LENGTH_SHORT).show();
                     count = 0;
@@ -308,6 +325,13 @@ public class QuestionActivity extends AppCompatActivity {
                 }
             }
         }, 2500); // 2,5 seconds
+    }
 
+    protected void disabledButtons(Button buttonAnswerOne, Button buttonAnswerTwo, Button buttonAnswerThree, Button buttonAnswerFour, Button buttonAnswerFive) {
+        buttonAnswerOne.setEnabled(false);
+        buttonAnswerTwo.setEnabled(false);
+        buttonAnswerThree.setEnabled(false);
+        buttonAnswerFour.setEnabled(false);
+        buttonAnswerFive.setEnabled(false);
     }
 }

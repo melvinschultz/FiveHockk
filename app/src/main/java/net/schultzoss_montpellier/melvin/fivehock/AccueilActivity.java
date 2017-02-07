@@ -1,8 +1,11 @@
 package net.schultzoss_montpellier.melvin.fivehock;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -42,6 +45,12 @@ public class AccueilActivity extends AppCompatActivity {
         final TextView textViewLevel = (TextView) findViewById(R.id.TextViewExperience);
         final ProgressBar horizontalProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
         final CircleImageView profilePicture = (CircleImageView) findViewById(R.id.profile_image);
+
+        if (shouldAskPermission()) {
+            if (hasPermission() != PackageManager.PERMISSION_GRANTED) {
+                getPermission();
+            }
+        }
 
         FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
         DatabaseReference myRef = database.getReference(); // Get database reference
@@ -132,5 +141,25 @@ public class AccueilActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private boolean shouldAskPermission(){
+
+        return(Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1);
+
+    }
+
+    @TargetApi(Build.VERSION_CODES.M)
+    private int hasPermission() {
+        return this.checkSelfPermission("READ_EXTERNAL_STORAGE");
+    }
+
+    @TargetApi(23)
+    private void getPermission() {
+        String[] perms = {"android.permission.READ_EXTERNAL_STORAGE"};
+
+        int permsRequestCode = 200;
+
+        this.requestPermissions(perms, permsRequestCode);
     }
 }
