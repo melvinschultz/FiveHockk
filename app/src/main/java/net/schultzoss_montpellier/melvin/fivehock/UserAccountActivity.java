@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -27,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import net.schultzoss_montpellier.melvin.fivehock.Tasks.RetrieveImageTask;
 import java.util.concurrent.ExecutionException;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -42,8 +46,12 @@ public class UserAccountActivity extends AppCompatActivity {
     StorageReference storageRef = mStorage.getReferenceFromUrl("gs://fivehock-7caab.appspot.com");
     StorageReference imagesRef = storageRef.child("images");
 
-    String defaultImg = "44aS3pW.jpg";
+    String defaultImg = "avatar.jpg";
+    String username;
 
+    User user;
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
     DatabaseReference myRef = database.getReference(); // Get database reference
     DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
@@ -73,7 +81,6 @@ public class UserAccountActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference(); // Get database reference
         DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
 
-        // when a dev click on "Question Page"
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,8 +111,7 @@ public class UserAccountActivity extends AppCompatActivity {
         changeAvatar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-
-                Intent i=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, SELECTED_PICTURE);
             }
         });
@@ -116,16 +122,19 @@ public class UserAccountActivity extends AppCompatActivity {
                  // Get current user UID
                  String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  // Get current user profile using uid
-                 User user = dataSnapshot.child(uID).getValue(User.class);
+                 user = dataSnapshot.child(uID).getValue(User.class);
+
+                 username = user.username;
+
                  textViewUsername.setText(user.username);
 
                  mailEdit.setText(user.email);
 
                  //Level and XP of user
                  int experience = user.xp;
-                 if(experience == 0){
+                 if (experience == 0) {
                      textViewLevel.setText("Level 1");
-                 }else {
+                 } else {
                      int level = (int) ceil(Math.round(experience / 10) + 1);
                  }
                  int currentXp = (experience%10)*10;
@@ -133,7 +142,7 @@ public class UserAccountActivity extends AppCompatActivity {
                  horizontalProgressBar.setProgress(currentXp);
                  textViewExperience.setText("Experience : "+experience%10+" / "+10);
 
-                 imagesRef.child(user.avatar.equals("")?defaultImg:user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                 imagesRef.child(user.avatar.equals("") ? defaultImg : user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                      @Override
                      public void onSuccess(Uri uri) {
                          try {
@@ -158,7 +167,7 @@ public class UserAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        ImageView profilePicture = (ImageView) findViewById(R.id.profile_image);
+        final ImageView profilePicture = (ImageView) findViewById(R.id.profile_image);
 
         System.out.println("ON ACTIVITY RESULT ???");
         // TODO Auto-generated method stub
@@ -167,7 +176,6 @@ public class UserAccountActivity extends AppCompatActivity {
         switch (requestCode){
             case SELECTED_PICTURE:
                 if(resultCode==RESULT_OK){
-                    System.out.println("VERY GOOD");
                     Uri uri = data.getData();
 
                     String[]projection={MediaStore.Images.Media.DATA};
@@ -177,21 +185,23 @@ public class UserAccountActivity extends AppCompatActivity {
 
                     int columnIndex = cursor.getColumnIndex(projection[0]);
                     String filePath = cursor.getString(columnIndex);
-
                     cursor.close();
 
                     Bitmap selectedAvatar= BitmapFactory.decodeFile(filePath);
+                    final Drawable d=new BitmapDrawable(selectedAvatar);
 
-                    profilePicture.setImageBitmap(selectedAvatar);
-
-                    //EXPORT THE IMAGE TO FIREBASE
+                    /*INSERT IMG TO STORAGE*/
                     // Create a storage reference from our app
-                    /*
-                    StorageReference storageRef = storage.getReferenceFromUrl("gs://<your-bucket-name>");
+                    StorageReference storageRef = storage.getReferenceFromUrl("gs://fivehock-7caab.appspot.com");
 
-                    Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
-                    StorageReference riversRef = storageRef.child("images/"+file.getLastPathSegment());
-                    uploadTask = riversRef.putFile(file);
+                    Uri file = Uri.fromFile(new File(filePath));
+
+                    // Get current user UID
+                    final String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    // Get current user profile using uid
+
+                    StorageReference riversRef = storageRef.child("images/"+uID+".jpg");
+                    UploadTask uploadTask = riversRef.putFile(file);
 
                     // Register observers to listen for when the download is done or if it fails
                     uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -204,12 +214,28 @@ public class UserAccountActivity extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                             Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
+                            mUsersRef.child(uID).child("avatar").setValue(uID+".jpg");
+
+                            System.out.println("USER.AVATAR :" + user.avatar);
+
+                            imagesRef.child(user.avatar.equals("")?defaultImg:user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    try {
+                                        // Download was started on main thread which crashed the app,
+                                        // so a thread dedicated to the download is used
+                                        Bitmap bmp = new RetrieveImageTask().execute(uri.toString()).get();
+                                        profilePicture.setImageBitmap(bmp);
+                                    } catch (InterruptedException | ExecutionException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                         }
                     });
-                    */
+
                 }
         }
     }
-
-
 }

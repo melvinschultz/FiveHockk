@@ -60,7 +60,7 @@ public class AccueilActivity extends AppCompatActivity {
         StorageReference storageRef = mStorage.getReferenceFromUrl("gs://fivehock-7caab.appspot.com");
         final StorageReference imagesRef = storageRef.child("images");
 
-        final String defaultImg = "44aS3pW.jpg";
+        final String defaultImg = "avatar.jpg";
 
         // when click on "Start a quiz"
         viewStartQuizButton.setOnClickListener(new View.OnClickListener() {
