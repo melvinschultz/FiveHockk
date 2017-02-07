@@ -29,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
 import net.schultzoss_montpellier.melvin.fivehock.Tasks.RetrieveImageTask;
 import java.util.concurrent.ExecutionException;
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -44,8 +46,12 @@ public class UserAccountActivity extends AppCompatActivity {
     StorageReference storageRef = mStorage.getReferenceFromUrl("gs://fivehock-7caab.appspot.com");
     StorageReference imagesRef = storageRef.child("images");
 
-    String defaultImg = "44aS3pW.jpg";
+    String defaultImg = "avatar.jpg";
+    String username;
 
+    User user;
+
+    FirebaseStorage storage = FirebaseStorage.getInstance();
     FirebaseDatabase database = FirebaseDatabase.getInstance(); // Get database instance
     DatabaseReference myRef = database.getReference(); // Get database reference
     DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
@@ -117,7 +123,10 @@ public class UserAccountActivity extends AppCompatActivity {
                  // Get current user UID
                  String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
                  // Get current user profile using uid
-                 User user = dataSnapshot.child(uID).getValue(User.class);
+                 user = dataSnapshot.child(uID).getValue(User.class);
+
+                 username = user.username;
+
                  textViewUsername.setText(user.username);
 
                  mailEdit.setText(user.email);
@@ -159,7 +168,7 @@ public class UserAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
-        ImageView profilePicture = (ImageView) findViewById(R.id.profile_image);
+        final ImageView profilePicture = (ImageView) findViewById(R.id.profile_image);
 
         System.out.println("ON ACTIVITY RESULT ???");
         // TODO Auto-generated method stub
@@ -168,7 +177,6 @@ public class UserAccountActivity extends AppCompatActivity {
         switch (requestCode){
             case SELECTED_PICTURE:
                 if(resultCode==RESULT_OK){
-                    System.out.println("VERY GOOD");
                     Uri uri = data.getData();
                     String[]projection={MediaStore.Images.Media.DATA};
 
@@ -177,25 +185,25 @@ public class UserAccountActivity extends AppCompatActivity {
 
                     int columnIndex = cursor.getColumnIndex(projection[0]);
                     String filePath = cursor.getString(columnIndex);
-
                     cursor.close();
 
                     Bitmap selectedAvatar= BitmapFactory.decodeFile(filePath);
-                    Drawable d=new BitmapDrawable(selectedAvatar);
+                    final Drawable d=new BitmapDrawable(selectedAvatar);
 
-                    System.out.println("PATH : "+filePath);
-                    System.out.println("Drawable : "+d);
 
-                    profilePicture.setImageDrawable(d);
 
-                    //EXPORT THE IMAGE TO FIREBASE
+                    /*INSERT IMG TO STORAGE*/
                     // Create a storage reference from our app
-                    /*
-                    StorageReference storageRef = storage.getReferenceFromUrl("gs://<your-bucket-name>");
+                    StorageReference storageRef = storage.getReferenceFromUrl("gs://fivehock-7caab.appspot.com");
 
-                    Uri file = Uri.fromFile(new File("path/to/images/rivers.jpg"));
-                    StorageReference riversRef = storageRef.child("images/"+file.getLastPathSegment());
-                    uploadTask = riversRef.putFile(file);
+                    Uri file = Uri.fromFile(new File(filePath));
+
+                    // Get current user UID
+                    final String uID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    // Get current user profile using uid
+
+                    StorageReference riversRef = storageRef.child("images/"+uID+".jpg");
+                    UploadTask uploadTask = riversRef.putFile(file);
 
                     // Register observers to listen for when the download is done or if it fails
                     uploadTask.addOnFailureListener(new OnFailureListener() {
@@ -208,9 +216,27 @@ public class UserAccountActivity extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             // taskSnapshot.getMetadata() contains file metadata such as size, content-type, and download URL.
                             Uri downloadUrl = taskSnapshot.getDownloadUrl();
+                            DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
+                            mUsersRef.child(uID).child("avatar").setValue(uID+".jpg");
+
+                            System.out.println("USER.AVATAR :" + user.avatar);
+
+                            imagesRef.child(user.avatar.equals("")?defaultImg:user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    try {
+                                        // Download was started on main thread which crashed the app,
+                                        // so a thread dedicated to the download is used
+                                        Bitmap bmp = new RetrieveImageTask().execute(uri.toString()).get();
+                                        profilePicture.setImageBitmap(bmp);
+                                    } catch (InterruptedException | ExecutionException e) {
+                                        e.printStackTrace();
+                                    }
+                                }
+                            });
                         }
                     });
-                    */
+
                 }
         }
     }

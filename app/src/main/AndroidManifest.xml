@@ -21,13 +21,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity" />
-        <activity android:name=".UserAccountActivity" />
-        <activity android:name=".ResetPasswordActivity" />
-        <activity android:name=".QuestionActivity" />
-        <activity android:name=".AddQuestionActivity" />
-        <activity android:name=".AccueilActivity" />
-        <activity android:name=".QuizScoreActivity"></activity>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".RegisterActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".UserAccountActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".ResetPasswordActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".QuestionActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".AddQuestionActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".AccueilActivity" />
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".QuizScoreActivity"></activity>
+
     </application>
 
 </manifest>
