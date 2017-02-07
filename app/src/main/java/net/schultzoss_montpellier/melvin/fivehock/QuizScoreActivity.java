@@ -51,10 +51,10 @@ public class QuizScoreActivity extends AppCompatActivity {
         // Get the database URL
         DatabaseReference myRef = database.getReference();
         // reference à l'utilisateur (avec un id précis (uID))
-        final DatabaseReference mUsersXpRef = myRef.child("users").child(uID);
+        final DatabaseReference mUserRef = myRef.child("users").child(uID);
 
         // Listener pour le changement d'une valeur (en loccurrence l'xp de l'user dans notre cas)
-        mUsersXpRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        mUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 // récupère le schema de classe User pour pouvoir getter les données de l'utilisateur
@@ -66,7 +66,7 @@ public class QuizScoreActivity extends AppCompatActivity {
                 int userNewXp = userCurrentXp + userPoints;
 
                 // appelle la fonction qui se charge de changer la valeur en bdd
-                updateUserXp(mUsersXpRef, userNewXp);
+                updateUserXp(mUserRef, userNewXp);
             }
 
             @Override
@@ -77,7 +77,7 @@ public class QuizScoreActivity extends AppCompatActivity {
     }
 
     // grace à la reference bdd, on set la valeur du champ xp
-    private void updateUserXp(DatabaseReference mUsersXpRef, int userNewXp) {
-        mUsersXpRef.child("xp").setValue(userNewXp);
+    private void updateUserXp(DatabaseReference mUserRef, int userNewXp) {
+        mUserRef.child("xp").setValue(userNewXp);
     }
 }

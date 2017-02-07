@@ -75,7 +75,6 @@ public class UserAccountActivity extends AppCompatActivity {
         DatabaseReference myRef = database.getReference(); // Get database reference
         DatabaseReference mUsersRef = myRef.child("users"); // Get users reference
 
-        // when a dev click on "Question Page"
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,7 +105,7 @@ public class UserAccountActivity extends AppCompatActivity {
         changeAvatar.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                Intent i=new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(i, SELECTED_PICTURE);
             }
         });
@@ -124,9 +123,9 @@ public class UserAccountActivity extends AppCompatActivity {
 
                  //Level and XP of user
                  int experience = user.xp;
-                 if(experience == 0){
+                 if (experience == 0) {
                      textViewLevel.setText("Level 1");
-                 }else {
+                 } else {
                      int level = (int) ceil(Math.round(experience / 10) + 1);
                  }
                  int currentXp = (experience%10)*10;
@@ -134,7 +133,7 @@ public class UserAccountActivity extends AppCompatActivity {
                  horizontalProgressBar.setProgress(currentXp);
                  textViewExperience.setText("Experience : "+experience%10+" / "+10);
 
-                 imagesRef.child(user.avatar.equals("")?defaultImg:user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                 imagesRef.child(user.avatar.equals("") ? defaultImg : user.avatar).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                      @Override
                      public void onSuccess(Uri uri) {
                          try {
