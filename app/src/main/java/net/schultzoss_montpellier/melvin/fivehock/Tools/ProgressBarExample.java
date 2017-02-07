@@ -1,7 +1,9 @@
 package net.schultzoss_montpellier.melvin.fivehock.Tools;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,13 +16,14 @@ public class ProgressBarExample extends AppCompatActivity {
     TextView textView;
     Handler progressHandler = new Handler();
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accueil);
 
         androidProgressBar = (ProgressBar) findViewById(R.id.horizontal_progress_bar);
-        textView = (TextView) findViewById(R.id.TextViewLevel);
+        textView = (TextView) findViewById(R.id.TextViewExperience);
         //Start progressing
         new Thread(new Runnable() {
             public void run() {
