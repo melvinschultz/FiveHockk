@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -169,6 +167,7 @@ public class UserAccountActivity extends AppCompatActivity {
                 if(resultCode==RESULT_OK){
                     System.out.println("VERY GOOD");
                     Uri uri = data.getData();
+
                     String[]projection={MediaStore.Images.Media.DATA};
 
                     Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
@@ -180,12 +179,8 @@ public class UserAccountActivity extends AppCompatActivity {
                     cursor.close();
 
                     Bitmap selectedAvatar= BitmapFactory.decodeFile(filePath);
-                    Drawable d=new BitmapDrawable(selectedAvatar);
 
-                    System.out.println("PATH : "+filePath);
-                    System.out.println("Drawable : "+d);
-
-                    profilePicture.setImageDrawable(d);
+                    profilePicture.setImageBitmap(selectedAvatar);
 
                     //EXPORT THE IMAGE TO FIREBASE
                     // Create a storage reference from our app
