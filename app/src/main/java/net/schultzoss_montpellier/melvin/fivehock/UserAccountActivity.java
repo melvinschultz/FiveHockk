@@ -4,9 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -186,9 +183,6 @@ public class UserAccountActivity extends AppCompatActivity {
                     int columnIndex = cursor.getColumnIndex(projection[0]);
                     String filePath = cursor.getString(columnIndex);
                     cursor.close();
-
-                    Bitmap selectedAvatar= BitmapFactory.decodeFile(filePath);
-                    final Drawable d=new BitmapDrawable(selectedAvatar);
 
                     /*INSERT IMG TO STORAGE*/
                     // Create a storage reference from our app
