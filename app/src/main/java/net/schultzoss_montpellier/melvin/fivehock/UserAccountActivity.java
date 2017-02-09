@@ -137,7 +137,7 @@ public class UserAccountActivity extends AppCompatActivity {
                      textViewLevel.setText("Level 1");
                  } else {
                      int level = (int) ceil(Math.round(experience / 10) + 1);
-                     textViewLevel.setText("Level "+level);
+                     textViewLevel.setText("Level "+ level);
                  }
                  int currentXp = (experience%10)*10;
 

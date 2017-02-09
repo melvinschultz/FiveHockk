@@ -8,14 +8,6 @@
     tools:context="net.schultzoss_montpellier.melvin.fivehock.QuestionActivity">
 
     <TextView
-        android:text="Question x/n"
-        android:layout_width="192dp"
-        android:layout_height="36dp"
-        android:id="@+id/textView3"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <TextView
         android:text="Question 1 ?"
         android:layout_width="0dp"
         android:layout_height="0dp"
